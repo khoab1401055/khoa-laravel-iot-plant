@@ -16827,6 +16827,10 @@ html:not(.layout-footer-fixed) .content-wrapper {
     color: var(--text-green-1) !important;
 }
 
+.spinner-active {
+    pointer-events: none;
+}
+
 .layout-navbar-fixed .layout-wrapper:not(.layout-horizontal) .layout-page:before {
     content: "";
     width: 100%;

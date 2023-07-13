@@ -16896,3 +16896,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .text-green-1 {
     color: var(--text-green-1) !important;
 }
+
+.spinner-active {
+    pointer-events: none;
+}

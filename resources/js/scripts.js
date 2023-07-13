@@ -35,7 +35,7 @@ $('#submit-ajax').submit(function(e) {
         color: '#C2E19D',
         lines: 12
     }).spin(target);
-
+    $('body').addClass('spinner-active');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -48,6 +48,7 @@ $('#submit-ajax').submit(function(e) {
         success: function(response) {
             spinner.stop();
             toastr.clear();
+            $('body').removeClass('spinner-active');
             if (response.success) {
                 toastr.success(response.success);
                 // Redirect or perform necessary actions
