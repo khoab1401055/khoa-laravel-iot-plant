@@ -915,7 +915,7 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 
 .bg-menu-theme .menu-inner>.menu-item.active>.menu-link {
     color: var(--bs-primary);
-    background-color: rgba(105, 108, 255, 0.16) !important;
+    background-color: rgba(229, 237, 221, 1) !important;
 }
 
 .bg-menu-theme .menu-inner>.menu-item.active:before {

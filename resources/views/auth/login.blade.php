@@ -5,9 +5,11 @@
 @section('scripts')
     <script src="{{ mix('js/scripts.js') }}" defer></script>
 @endsection
+@section('title', 'Login')
 
 
 @section('content')
+
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
@@ -32,7 +34,7 @@
                                 <input id="username" type="text"
                                     class="form-control" name="username"
                                     value="{{ old('username') }}" required autocomplete="username" autofocus
-                                    placeholder="Enter your username" autofocus>
+                                    placeholder="Enter your username" autofocus required>
 
                             </div>
 
@@ -46,7 +48,7 @@
                                 <div class="input-group input-group-merge">
                                     <input value="{{ old('password') }}"  type="password" id="password" class="form-control" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="password" />
+                                        aria-describedby="password" required>
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
 
                                 </div>
@@ -54,7 +56,7 @@
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                        {{ old('remember') ? 'checked' : '' }} />
+                                        {{ old('remember') ? 'checked' : '' }} >
                                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                                 </div>
                             </div>

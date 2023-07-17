@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Administrator',
             'username' => 'admin',
+            'email' => 'administrator@plant-iot.com',
             'password' => Hash::make('admin'),
         ]);
     }

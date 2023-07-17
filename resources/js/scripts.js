@@ -1,30 +1,25 @@
 import {
     Spinner
 } from 'spin.js';
-const toggler = document.querySelectorAll('.form-password-toggle i')
-if (typeof toggler !== 'undefined' && toggler !== null) {
 
-    toggler.forEach(el => {
-        el.addEventListener('click', e => {
-            e.preventDefault()
-            const formPasswordToggle = el.closest('.form-password-toggle')
-            const formPasswordToggleIcon = formPasswordToggle.querySelector('i')
-            const formPasswordToggleInput = formPasswordToggle.querySelector('input')
 
-            if (formPasswordToggleInput.getAttribute('type') === 'text') {
-                formPasswordToggleInput.setAttribute('type', 'password')
-                formPasswordToggleIcon.classList.replace('bx-show', 'bx-hide')
-            } else if (formPasswordToggleInput.getAttribute('type') === 'password') {
-                formPasswordToggleInput.setAttribute('type', 'text')
-                formPasswordToggleIcon.classList.replace('bx-hide', 'bx-show')
-            }
-        })
-    })
-}
 
 //
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $('#submit-ajax').submit(function(e) {
     e.preventDefault(); // Ngăn chặn form gửi theo cách thông thường
+
+    // Kiểm tra checkbox
+    var checkbox = $('#terms-conditions');
+    if (checkbox.length > 0 && !checkbox.prop('checked')) {
+        toastr.error('Please agree to the privacy policy and terms.');
+        return false;
+    }
 
     var form = $(this);
     var url = form.attr('action');
@@ -36,11 +31,7 @@ $('#submit-ajax').submit(function(e) {
         lines: 12
     }).spin(target);
     $('body').addClass('spinner-active');
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+
     $.ajax({
         url: url,
         method: method,
@@ -51,15 +42,32 @@ $('#submit-ajax').submit(function(e) {
             $('body').removeClass('spinner-active');
             if (response.success) {
                 toastr.success(response.success);
-                // Redirect or perform necessary actions
-                window.location.href = response.route_name;
+                Turbolinks.visit(response.route_name);
             } else {
                 toastr.error(response.errors);
             }
-
         }
     })
+});
 
 
+$('#logout').click(function(e) {
+    e.preventDefault(); // Ngăn chặn hành động mặc định của phần tử (ví dụ: ngăn chặn việc submit form)
+    var url = route('logout');
+    var method = 'POST';
+    const target = document.getElementById('loading');
+    const spinner = new Spinner({
+        color: '#C2E19D',
+        lines: 12
+    }).spin(target);
+    $('body').addClass('spinner-active');
+    $.ajax({
+        url: url,
+        method: method,
+        success: function(response) {
+            // window.location.href = response.route_name;
+            Turbolinks.visit(response.route_name);
+        },
+    });
 
 });

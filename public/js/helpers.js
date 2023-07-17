@@ -1,7 +1,7 @@
 // Constants
-const TRANS_EVENTS = ['transitionend', 'webkitTransitionEnd', 'oTransitionEnd']
-const TRANS_PROPERTIES = ['transition', 'MozTransition', 'webkitTransition', 'WebkitTransition', 'OTransition']
-const INLINE_STYLES = `
+TRANS_EVENTS = ['transitionend', 'webkitTransitionEnd', 'oTransitionEnd']
+TRANS_PROPERTIES = ['transition', 'MozTransition', 'webkitTransition', 'WebkitTransition', 'OTransition']
+INLINE_STYLES = `
 .layout-menu-fixed .layout-navbar-full .layout-menu,
 .layout-page {
   padding-top: {navbarHeight}px !important;
@@ -12,10 +12,10 @@ const INLINE_STYLES = `
 
 // Guard
 function requiredParam(name) {
-  throw new Error(`Parameter required${name ? `: \`${name}\`` : ''}`)
+    throw new Error(`Parameter required${name ? `: \`${name}\`` : ''}`)
 }
 
-const Helpers = {
+ Helpers = {
   // Root Element
   ROOT_EL: typeof window !== 'undefined' ? document.documentElement : null,
 
@@ -845,6 +845,5 @@ if (typeof window !== 'undefined') {
       document.removeEventListener('DOMContentLoaded', onContentLoaded)
     })
 }
-
 // ---
-export { Helpers }
+window.Helpers = Helpers;
