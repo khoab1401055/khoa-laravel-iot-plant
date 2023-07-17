@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LivewireRoutesController;
+use App\Http\Livewire\DevicesLivewire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('devices')->group(function () {
+        Route::get('devices-list', [LivewireRoutesController::class,'devicesList'])->name('devices.list');
+        Route::get('devices-add', [LivewireRoutesController::class,'devicesAdd'])->name('devices.add');
+
+    });
+});

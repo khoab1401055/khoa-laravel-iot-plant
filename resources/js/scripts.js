@@ -71,3 +71,11 @@ $('#logout').click(function(e) {
     });
 
 });
+document.addEventListener('turbolinks:before-visit', function(event) {
+    const currentURL = window.location.href;
+    const targetURL = event.data.url;
+
+    if (currentURL === targetURL) {
+        event.preventDefault(); // Chặn Turbolinks tải lại trang
+    }
+});

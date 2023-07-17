@@ -17,8 +17,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item @if (Route::currentRouteName() == 'home') active @endif ">
+            <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -191,20 +191,20 @@
                 </li>
             </ul>
         </li> --}}
-        <li class="menu-item">
+        <li class="menu-item @if (in_array(Route::currentRouteName(), ['devices.add', 'devices.list'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Layouts">Form Layouts</div>
+                <div data-i18n="Form Layouts">Devices</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="form-layouts-vertical.html" class="menu-link">
-                        <div data-i18n="Vertical Form">Vertical Form</div>
+                <li class="menu-item  @if (Route::currentRouteName() == 'devices.list') active @endif">
+                    <a href="{{ route('devices.list') }}" class="menu-link">
+                        <div data-i18n="Vertical Form">Devices List</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="form-layouts-horizontal.html" class="menu-link">
-                        <div data-i18n="Horizontal Form">Horizontal Form</div>
+                <li class="menu-item @if (Route::currentRouteName() == 'devices.add') active @endif" >
+                    <a href="{{ route('devices.add') }}" class="menu-link">
+                        <div data-i18n="Horizontal Form">Device Add</div>
                     </a>
                 </li>
             </ul>
@@ -213,9 +213,46 @@
         <li class="menu-item">
             <a href="tables-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
-                <div data-i18n="Tables">Tables</div>
+                <div data-i18n="Tables">Monitoring </div>
             </a>
         </li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Administator</span></li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div data-i18n="Account Settings">Account Settings</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="pages-account-settings-account.html" class="menu-link">
+                  <div data-i18n="Account">Accounts</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <div data-i18n="Notifications">Reports</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="menu-item">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-copy"></i>
+              <div data-i18n="Master data">Master data</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
+                  <div data-i18n="Perfect Scrollbar">Perfect scrollbar</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="extended-ui-text-divider.html" class="menu-link">
+                  <div data-i18n="Text Divider">Text Divider</div>
+                </a>
+              </li>
+            </ul>
+          </li>
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         {{-- <li class="menu-item">
