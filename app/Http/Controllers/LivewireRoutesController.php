@@ -16,5 +16,10 @@ class LivewireRoutesController extends Controller
         // component_exists();
         return view('pages.device_add');
     }
+    public function farmsList()
+    {
+        // component_exists();
+        return view('pages.farm_list');
+    }
 
 }

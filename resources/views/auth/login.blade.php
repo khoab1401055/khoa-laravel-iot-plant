@@ -2,9 +2,7 @@
 @section('style')
     <link href="{{ asset('css/boxicons.css') }}" rel="stylesheet">
 @endsection
-@section('scripts')
-    <script src="{{ mix('js/scripts.js') }}" defer></script>
-@endsection
+
 @section('title', 'Login')
 
 
@@ -27,17 +25,14 @@
                         <p class="mb-4">Please sign-in to your account</p>
 
                         </span>
-                        <form method="POST" action="{{ route('login') }}" id="submit-ajax">
-                            @csrf
+                        <form method="POST" action="{{ route('login') }}" id="login">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Username</label>
                                 <input id="username" type="text"
                                     class="form-control" name="username"
                                     value="{{ old('username') }}" required autocomplete="username" autofocus
                                     placeholder="Enter your username" autofocus required>
-
                             </div>
-
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Password</label>
@@ -61,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                                <button class="btn btn-primary d-grid w-100" type="button" onclick="submitForm('login')" >Sign in</button>
                             </div>
                         </form>
 
