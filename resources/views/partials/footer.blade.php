@@ -7,8 +7,11 @@
                 class="footer-link fw-bolder">Incub Tech</a>
         </div>
         <div>
-            <a href="/license/" class="footer-link me-4"
-                target="_blank">License</a>
+            <a href="{{ route('home') }}" class="footer-link me-4">
+
+                <span class="badge bg-green-4">  {{ __('messages.home') }}</span>
+            </a>
+
             <a href="/" target="_blank" class="footer-link me-4">More Themes</a>
 
             <a href="/demo/sneat-bootstrap-html-admin-template/documentation/"

@@ -17970,6 +17970,14 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 .dropdown-menu .current-locale {
     font-weight: bold;
 }
+
+.bg-green-4 {
+    background-color: var(--text-green-4) !important;
+}
+
+.bg-green-4:hover {
+    background-color: var(--text-green-3) !important;
+}
 @charset "UTF-8";
 .authentication-wrapper {
     display: flex;

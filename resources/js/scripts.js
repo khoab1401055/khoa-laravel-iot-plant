@@ -145,8 +145,11 @@ document.addEventListener('turbolinks:load', function() {
             url: url,
             method: 'POST',
             success: function(response) {
+                location.reload();
+
+                // Turbolinks.visit(window.location.href);
                 // console.log(response.route_name)
-                Turbolinks.visit(route('home'));
+                // Turbolinks.visit(route('home'));
             },
             error: function() {
                 // Handle error, language not changed
