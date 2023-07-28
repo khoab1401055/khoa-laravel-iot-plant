@@ -80,7 +80,16 @@ return [
     |
     */
 
-    'locale' => 'vi',
+    'locales' => [
+        'en' => [
+            'name' => 'English',
+            'description' => 'English Language',
+        ],
+        'vi' => [
+            'name' => 'Viet Nam',
+            'description' => 'Tiếng Việt',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

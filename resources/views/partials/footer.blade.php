@@ -4,7 +4,7 @@
             ©
 
             <a href="" target="_blank"
-                class="footer-link fw-bolder">ThemeSelection</a>
+                class="footer-link fw-bolder">Incub Tech</a>
         </div>
         <div>
             <a href="/license/" class="footer-link me-4"

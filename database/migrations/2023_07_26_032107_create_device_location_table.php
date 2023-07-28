@@ -24,6 +24,8 @@ class CreateDeviceLocationTable extends Migration
             $table->string('district')->nullable();
             $table->string('ward')->nullable();
             $table->string('city')->nullable();
+            $table->boolean('is_active')->default(true);
+
             $table->timestamps();
             $table->unsignedBigInteger('updated_by')->nullable(); // Thêm cột updated_by
             $table->unsignedBigInteger('created_by')->nullable(); // Thêm cột created_by

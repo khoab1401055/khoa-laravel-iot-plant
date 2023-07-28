@@ -4,8 +4,9 @@
 @import 'variables';
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
+@import '~nprogress/nprogress.css';
+@import '~toastr/toastr.scss';
+@import '../../node_modules/spin.js/spin.css';
 @import './../css/core.css';
 @import './../css/theme-default.css';
 @import './../css/page-auth.css';
-@import '../../node_modules/spin.js/spin.css';
-@import '~toastr/toastr.scss';

@@ -25,4 +25,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function changeLanguage($locale)
+    {
+
+        if (array_key_exists($locale, config('app.locales'))) {
+            session()->put('locale', $locale);
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
+    }
+
 }
+

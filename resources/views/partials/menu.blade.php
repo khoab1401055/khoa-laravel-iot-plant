@@ -20,7 +20,7 @@
         <li class="menu-item @if (Route::currentRouteName() == 'home') active @endif ">
             <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">{{ __('messages.dashboard') }}</div>
             </a>
         </li>
 
@@ -28,24 +28,24 @@
 
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pages</span>
+            <span class="menu-header-text">{{ __('messages.pages') }}</span>
         </li>
 
 
         <li class="menu-item @if (in_array(Route::currentRouteName(), ['farms.list'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Layouts">Farms</div>
+                <div data-i18n="Form Layouts">{{ __('messages.farms') }}</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item @if (Route::currentRouteName() == 'farms.list') active @endif">
                     <a href="{{ route('farms.list') }}" class="menu-link">
-                        <div data-i18n="Vertical Form">Farms List</div>
+                        <div data-i18n="Vertical Form">{{ __('messages.farms.list') }}</div>
                     </a>
                 </li>
                 <li class="menu-item" >
                     <a href="{{ route('devices.add') }}" class="menu-link">
-                        <div data-i18n="Horizontal Form">Farm Add</div>
+                        <div data-i18n="Horizontal Form">{{ __('messages.farms.add') }}</div>
                     </a>
                 </li>
             </ul>
@@ -53,17 +53,17 @@
         <li class="menu-item @if (in_array(Route::currentRouteName(), ['devices.add', 'devices.list'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Layouts">Devices</div>
+                <div data-i18n="Form Layouts">{{ __('messages.devices') }}</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item  @if (Route::currentRouteName() == 'devices.list') active @endif">
                     <a href="{{ route('devices.list') }}" class="menu-link">
-                        <div data-i18n="Vertical Form">Devices List</div>
+                        <div data-i18n="Vertical Form">{{ __('messages.device_list') }}</div>
                     </a>
                 </li>
                 <li class="menu-item @if (Route::currentRouteName() == 'devices.add') active @endif" >
                     <a href="{{ route('devices.add') }}" class="menu-link">
-                        <div data-i18n="Horizontal Form">Device Add</div>
+                        <div data-i18n="Horizontal Form">{{ __('messages.add_device') }}</div>
                     </a>
                 </li>
             </ul>
@@ -72,24 +72,24 @@
         <li class="menu-item">
             <a href="tables-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
-                <div data-i18n="Tables">Monitoring </div>
+                <div data-i18n="Tables"> {{ __('messages.monitoring') }} </div>
             </a>
         </li>
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Administator</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">{{ __('messages.administrator') }}</span></li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
-              <div data-i18n="Account Settings">Account Settings</div>
+              <div data-i18n="Account Settings">{{ __('messages.accounts.setting') }}</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
                 <a href="pages-account-settings-account.html" class="menu-link">
-                  <div data-i18n="Account">Accounts</div>
+                  <div data-i18n="Account"> {{ __('messages.accounts') }}</div>
                 </a>
               </li>
               <li class="menu-item">
                 <a href="pages-account-settings-notifications.html" class="menu-link">
-                  <div data-i18n="Notifications">Reports</div>
+                  <div data-i18n="Notifications"> {{ __('messages.reports') }}</div>
                 </a>
               </li>
             </ul>
@@ -97,17 +97,13 @@
           <li class="menu-item">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-copy"></i>
-              <div data-i18n="Master data">Master data</div>
+              <div data-i18n="Master data">{{ __('messages.master_data') }}</div>
             </a>
             <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
-                  <div data-i18n="Perfect Scrollbar">Perfect scrollbar</div>
-                </a>
-              </li>
+
               <li class="menu-item">
                 <a href="extended-ui-text-divider.html" class="menu-link">
-                  <div data-i18n="Text Divider">Text Divider</div>
+                  <div data-i18n="Text Divider">checking</div>
                 </a>
               </li>
             </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farms;
 use Illuminate\Http\Request;
 
 class LivewireRoutesController extends Controller
@@ -22,4 +23,13 @@ class LivewireRoutesController extends Controller
         return view('pages.farm_list');
     }
 
+    public function goToFarm(Request $request)
+    {
+        // component_exists();
+        $farm = Farms::with('customer','activeFarmLocation')->where('name_code', $request->name)->first();
+        if (!$farm) {
+            abort(404);
+        }
+        return view('pages.goto_farm',compact('farm'));
+    }
 }

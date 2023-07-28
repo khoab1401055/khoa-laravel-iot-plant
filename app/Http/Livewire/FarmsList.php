@@ -9,18 +9,34 @@ class FarmsList extends Component
 {
 
     public $farms;
-
-    public function mount()
-    {
-        // Logic thực hiện khi component được tạo
-        $this->farms = Farms::get();
-    }
-
-
+    public $search = '';
+    public $column_search = ['description', 'name_code', 'is_active'];
+    protected $listeners = ['search'];
     public function render()
     {
-        return view('livewire.farms-list',[
-            'farms' => $this->farms,
-        ]);
+        $keyword = trim($this->search);
+        $farms = Farms::query();
+
+        if ($keyword !== null) {
+            $farms->where(function ($query) use ($keyword) {
+                foreach ($this->column_search as $column) {
+                    $query->orWhere($column, 'like', '%' . $keyword . '%');
+                }
+                $query->orWhereHas('customer', function ($query) use ($keyword) {
+                    $query->where('name', 'like', '%' . $keyword . '%');
+                });
+            });
+        }
+
+        $r_farms = $farms->get();
+
+        return view('livewire.farms-list')->with(compact('r_farms'));
     }
+    public function search($value)
+    {
+        $this->search = $value;
+
+        $this->render();
+    }
+
 }

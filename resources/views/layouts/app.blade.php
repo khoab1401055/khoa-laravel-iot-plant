@@ -14,12 +14,18 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
     @routes()
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('apex-charts/apex-charts.css') }}" rel="stylesheet">
+    @livewireStyles
     @yield('style')
 
 
@@ -31,7 +37,9 @@
     @else
         <div class="layout-wrapper layout-content-navbar">
             <div class="layout-container">
-                @include('partials.menu')
+                @if (isset($showMenu) && $showMenu)
+                    @include('partials.menu')
+                @endif
                 <div class="layout-page">
                     @include('partials.navbar')
                     <div class="content-wrapper">
@@ -46,16 +54,20 @@
     @guest
     @else
         <script src="{{ asset('js/helpers.js') }}" defer></script>
-        <script src="{{ asset('js/menu.js') }}" defer></script>
+
+        @if (isset($showMenu) && $showMenu)
+        <script src="{{ mix('js/menu.js') }}" defer></script>
+    @endif
         <script src="{{ asset('js/main.js') }}" defer></script>
         <script src="{{ asset('js/config.js') }}" defer></script>
         <script src="{{ asset('apex-charts/apexcharts.js') }}" defer></script>
         <script src="{{ asset('js/dashboards-analytics.js') }}" defer></script>
         {{-- <script src="{{ asset('js/button.js') }}" defer></script> --}}
+        @livewireScripts
     @endguest
     @yield('scripts')
     <script src="{{ mix('js/scripts.js') }}" defer></script>
-
+    <script></script>
 </body>
 
 </html>

@@ -8,6 +8,8 @@ use Livewire\Component;
 class DevicesListLivewire extends Component
 {
     public $devices;
+    public $search;
+    protected $listeners = ['search'];
 
     public function mount()
     {
@@ -20,5 +22,11 @@ class DevicesListLivewire extends Component
         return view('livewire.devices-list-livewire',[
             'devices' => $this->devices,
         ]);
+    }
+    public function search($value)
+    {
+        $this->search = $value;
+
+        $this->render();
     }
 }
