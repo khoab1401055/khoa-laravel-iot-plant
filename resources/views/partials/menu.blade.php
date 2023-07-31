@@ -32,7 +32,7 @@
         </li>
 
 
-        <li class="menu-item @if (in_array(Route::currentRouteName(), ['farms.list'])) active open @endif">
+        <li class="menu-item @if (in_array(Route::currentRouteName(), ['farms.list','farm.add'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Layouts">{{ __('messages.farms') }}</div>
@@ -43,7 +43,7 @@
                         <div data-i18n="Vertical Form">{{ __('messages.farms.list') }}</div>
                     </a>
                 </li>
-                <li class="menu-item" >
+                <li class="menu-item  @if (Route::currentRouteName() == 'farm.add') active @endif" >
                     <a href="{{ route('farm.add') }}" class="menu-link">
                         <div data-i18n="Horizontal Form">{{ __('messages.farms.add') }}</div>
                     </a>
