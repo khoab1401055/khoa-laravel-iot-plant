@@ -35,21 +35,25 @@ class RolesAndPermissionsSeeder extends Seeder
             $createPostPermission,
             $editPostPermission,
             $deletePostPermission,
+            $onlyViewPostPermission,
         ]);
 
         $adminRole->syncPermissions([
             $createPostPermission,
             $editPostPermission,
             $deletePostPermission,
+            $onlyViewPostPermission,
         ]);
 
         $editorRole->syncPermissions([
             $createPostPermission,
             $editPostPermission,
+            $onlyViewPostPermission,
         ]);
 
         $userRole->syncPermissions([
             $createPostPermission,
+            $onlyViewPostPermission,
         ]);
         $MonitorRole->syncPermissions([
             $onlyViewPostPermission,
