@@ -67,12 +67,56 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+
                             <div class="mb-3 col-6">
-                                <label for="location" class="form-label">{{ __('messages.location') }} <span
+                                <label for="province" class="form-label">{{ __('messages.province') }} <span class="text-danger">*</span></label>
+                                <select class="form-control" id="province" wire:model.defer="city">
+                                    <option value="">-- Select Province --</option>
+                                    @foreach ($provinces as $province)
+                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('city')
+                                    <!-- Hiển thị lỗi cho trường 'province_id' -->
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-6">
+                                <label for="district" class="form-label">{{ __('messages.district') }} <span class="text-danger">*</span></label>
+                                <select class="form-control" id="district" wire:model.defer="district">
+                                    <option value="">-- Select District --</option>
+                                    @foreach ($districts as $district)
+                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('district')
+                                    <!-- Hiển thị lỗi cho trường 'district_id' -->
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-6">
+                                <label for="ward" class="form-label">{{ __('messages.town') }} <span class="text-danger">*</span></label>
+                                <select class="form-control" id="ward" wire:model.defer="ward">
+                                    <option value="">-- Select Ward --</option>
+                                    @foreach ($wards as $ward)
+                                        <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('ward')
+                                    <!-- Hiển thị lỗi cho trường 'ward_id' -->
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+
+                            <div class="mb-3 col-6">
+                                <label for="street" class="form-label">{{ __('messages.street') }} <span
                                     class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="location" wire:model.defer="location">
-                                @error('location')
-                                    <!-- Hiển thị lỗi cho trường 'location' -->
+                                <input type="text" class="form-control" id="street" wire:model.defer="street">
+                                @error('street')
+                                    <!-- Hiển thị lỗi cho trường 'street' -->
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -86,56 +130,14 @@
                                 @enderror
                             </div>
                             <div class="mb-3 col-6">
-                                <label for="street" class="form-label">{{ __('messages.street') }} <span
+                                <label for="location" class="form-label">{{ __('messages.location') }} <span
                                     class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="street" wire:model.defer="street">
-                                @error('street')
-                                    <!-- Hiển thị lỗi cho trường 'street' -->
+                                <input type="text" class="form-control" id="location" wire:model.defer="location">
+                                @error('location')
+                                    <!-- Hiển thị lỗi cho trường 'location' -->
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="mb-3 col-6">
-                                <label for="province" class="form-label">{{ __('messages.province') }} <span class="text-danger">*</span></label>
-                                <select class="form-control" id="province" wire:model="province_id">
-                                    <option value="">-- Select Province --</option>
-                                    @foreach ($provinces as $province)
-                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('province_id')
-                                    <!-- Hiển thị lỗi cho trường 'province_id' -->
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3 col-6">
-                                <label for="district" class="form-label">{{ __('messages.district') }} <span class="text-danger">*</span></label>
-                                <select class="form-control" id="district" wire:model="district_id">
-                                    <option value="">-- Select District --</option>
-                                    @foreach ($districts as $district)
-                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('district_id')
-                                    <!-- Hiển thị lỗi cho trường 'district_id' -->
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3 col-6">
-                                <label for="ward" class="form-label">{{ __('messages.town') }} <span class="text-danger">*</span></label>
-                                <select class="form-control" id="ward" wire:model="ward_id">
-                                    <option value="">-- Select Ward --</option>
-                                    @foreach ($wards as $ward)
-                                        <option value="{{ $ward->id }}">{{ $ward->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('ward_id')
-                                    <!-- Hiển thị lỗi cho trường 'ward_id' -->
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
                         </div>
                     </div>
                 </div>

@@ -26,9 +26,8 @@ class FarmAdd extends Component
     public $ward;
     public $city;
 
-    public $province_id;
-    public $district_id;
-    public $ward_id;
+    public $province;
+
 
     protected $lastInsertedId = null;
     public function mount()
@@ -89,12 +88,12 @@ class FarmAdd extends Component
         $districts = [];
         $wards = [];
 
-        if ($this->province_id) {
-            $districts = District::where('province_id', $this->province_id)->orderBy('name','asc')->get();
+        if ($this->city) {
+            $districts = District::where('province_id', $this->city)->orderBy('name','asc')->get();
         }
 
-        if ($this->district_id) {
-            $wards = Ward::where('district_id', $this->district_id)->orderBy('name','asc')->get();
+        if ($this->district) {
+            $wards = Ward::where('district_id', $this->district)->orderBy('name','asc')->get();
         }
         $customers = Customers::all(); // Lấy danh sách customers từ cơ sở dữ liệu
         return view('livewire.farm-add',['provinces' => $provinces,
