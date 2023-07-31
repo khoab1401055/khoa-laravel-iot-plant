@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="menu-item" >
-                    <a href="{{ route('devices.add') }}" class="menu-link">
+                    <a href="{{ route('farm.add') }}" class="menu-link">
                         <div data-i18n="Horizontal Form">{{ __('messages.farms.add') }}</div>
                     </a>
                 </li>

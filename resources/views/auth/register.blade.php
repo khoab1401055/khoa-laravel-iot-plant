@@ -45,7 +45,7 @@
                             <div class="mb-3">
                                 <label for="username" class="form-label">Sex</label>
                                 <select class="form-control" name="sex" id="sex" autofocus required>
-                                    <option value="male">Male</option>
+                                    <option value="male" selected>Male</option>
                                     <option value="female">Female</option>
 
                                     <option value="nothing">Nothing</option>

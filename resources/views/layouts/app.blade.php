@@ -57,17 +57,18 @@
 
         @if (isset($showMenu) && $showMenu)
         <script src="{{ mix('js/menu.js') }}" defer></script>
-    @endif
+        @endif
         <script src="{{ asset('js/main.js') }}" defer></script>
         <script src="{{ asset('js/config.js') }}" defer></script>
         <script src="{{ asset('apex-charts/apexcharts.js') }}" defer></script>
         <script src="{{ asset('js/dashboards-analytics.js') }}" defer></script>
         {{-- <script src="{{ asset('js/button.js') }}" defer></script> --}}
         @livewireScripts
+        <script src="{{ mix('js/scripts_auth.js') }}" defer></script>
+
     @endguest
     @yield('scripts')
     <script src="{{ mix('js/scripts.js') }}" defer></script>
-    <script></script>
 </body>
 
 </html>

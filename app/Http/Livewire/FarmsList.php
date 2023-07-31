@@ -27,7 +27,7 @@ class FarmsList extends Component
                 });
             });
         }
-
+        $farms->orderBy('id','desc');
         $r_farms = $farms->get();
 
         return view('livewire.farms-list')->with(compact('r_farms'));

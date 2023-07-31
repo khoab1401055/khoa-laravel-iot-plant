@@ -394,4 +394,18 @@ return [
     'farm_closed' => 'Nông trại đóng cửa',
     'farm_welcome' => 'Chào mừng đến nông trại',
     'farm_family_trip' => 'Chuyến đi gia đình đến nông trại',
+    'information'=>'Thông Tin',
+    'location_title'=>'Thông Tin Vị Trí',
+    'name_code'=>'Mã Nông Trại',
+    'description'=>'Mô Tả',
+    'customer_select' => 'Chọn Khách Hàng',
+    'create' => 'Tạo',
+    'farm' => 'Nông Trại',
+    'ward'=>'Thị Trấn',
+
+
+
+
+
+
 ];

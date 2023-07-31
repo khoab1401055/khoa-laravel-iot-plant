@@ -23,6 +23,14 @@ class LivewireRoutesController extends Controller
         return view('pages.farm_list');
     }
 
+    public function farmAdd()
+    {
+        // component_exists();
+        return view('pages.farm_add');
+    }
+
+
+
     public function goToFarm(Request $request)
     {
         // component_exists();

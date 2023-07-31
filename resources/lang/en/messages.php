@@ -257,9 +257,9 @@ return [
     'audit_log' => 'Audit Log',
     'dashboard' => 'Dashboard',
     'logs' => 'Logs',
-    'pages'=>'Pages',
-    'accounts'=>'Accounts',
-    'accounts.setting'=>'Accounts Setting',
+    'pages' => 'Pages',
+    'accounts' => 'Accounts',
+    'accounts.setting' => 'Accounts Setting',
     'administrator' => 'Administrator',
     'user' => 'User',
     'role' => 'Role',
@@ -287,8 +287,9 @@ return [
     'full_access' => 'Full Access',
     'limited_access' => 'Limited Access',
     'restricted_access' => 'Restricted Access',
-
-
+    'create' => 'Create',
+    'farm' => 'Farm',
+    'ward'=>'Ward',
 
     //
     'billing' => 'Billing',
@@ -394,4 +395,9 @@ return [
     'farm_closed' => 'Farm Closed',
     'farm_welcome' => 'Welcome to the Farm',
     'farm_family_trip' => 'Family Trip to the Farm',
+    'information' => 'Information',
+    'location_title' => 'Location Information',
+    'name_code' => 'Name Code',
+    'description' => 'Description',
+    'customer_select' => 'Customer Select'
 ];

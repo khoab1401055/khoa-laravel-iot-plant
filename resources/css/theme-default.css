@@ -1009,6 +1009,10 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
     /* Số dòng hiển thị tối đa */
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.5em;
+    /* Chiều cao của mỗi hàng, có thể điều chỉnh để phù hợp với font-size và khoảng cách giữa các dòng */
+    height: 4.5em;
+    /* Tổng chiều cao cần hiển thị (3 hàng x 1.5em) */
 }
 
 #nprogress .bar {
@@ -1040,4 +1044,27 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 
 .bg-green-4:hover {
     background-color: var(--text-green-3) !important;
+}
+
+#progress-pin {
+    display: none;
+}
+
+.new-farm {
+    border: 2px solid var(--text-green-4);
+    /* Đường viền 2px màu xanh lá cây */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* Hiệu ứng shadow */
+    /* Các thuộc tính khác tùy chỉnh cho class new-farm tại đây */
+}
+
+
+/* Nếu bạn muốn đưa ra các hiệu ứng khác cho class new-farm khi hover, bạn có thể sử dụng pseudo-class :hover */
+
+.new-farm:hover {
+    border: 2px solid var(--bs-danger);
+    /* Đường viền 2px màu đỏ khi hover */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    /* Hiệu ứng shadow mạnh hơn khi hover */
+    /* Các thuộc tính khác tùy chỉnh khi hover tại đây */
 }

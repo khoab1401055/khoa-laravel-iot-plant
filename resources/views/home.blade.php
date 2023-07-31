@@ -12,12 +12,12 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
-            <div class="col-lg-8 mb-4 order-0">
+            <div class="col-lg-8 mb-4 order-0" id="welcome_plate">
                 <div class="card">
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                                <h5 class="card-title text-primary">Congratulations {{ auth()->user()->name }}! 🎉</h5>
 
                                 <p class="mb-4">
                                     You have done <span class="fw-bold">72%</span> more sales today. Check your new
@@ -37,6 +37,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-4 order-1">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-6 mb-4">
@@ -93,6 +94,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                 <div class="card">
                     <div class="row row-bordered g-0">
@@ -223,6 +225,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
@@ -486,6 +489,52 @@
                 </div>
             </div>
         </div>
+        @can('manage_users')
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Permissions</th>
+                        <th>Roles</th>
+                        <th>Default Role Permissions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            <ul>
+                                @foreach ($user->permissions as $permission)
+                                    <li>{{ $permission->name }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach ($user->roles as $role)
+                                    <li>{{ $role->name }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach ($user->roles as $role)
+                                    @foreach ($role->permissions as $permission)
+                                        <li>{{ $permission->name }}</li>
+                                    @endforeach
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endcan
     </div>
 
 

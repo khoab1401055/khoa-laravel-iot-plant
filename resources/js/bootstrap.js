@@ -1,9 +1,10 @@
 window._ = require('lodash');
 import Turbolinks from 'turbolinks';
 import NProgress from 'nprogress';
-
 try {
     require('bootstrap');
+    NProgress.configure({ showSpinner: false });
+
     Turbolinks.start();
     // Turbolinks.setProgressBarDelay(200);
     document.addEventListener('turbolinks:visit', function() {

@@ -24,3 +24,6 @@ mix.js('resources/js/scripts.js', 'public/js')
 
 mix.js('resources/js/menu.js', 'public/js')
     .sourceMaps().version();
+
+mix.js('resources/js/scripts_auth.js', 'public/js')
+    .sourceMaps().version();

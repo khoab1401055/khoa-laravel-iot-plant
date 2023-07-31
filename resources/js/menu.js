@@ -416,7 +416,9 @@ class Menu {
         TRANSITION_EVENTS.forEach(ev => el.addEventListener(ev, el._menuAnimationEndEventCb, false))
 
         el._menuAnimationEndEventTimeout = setTimeout(() => {
-            cb({ target: el })
+            cb({
+                target: el
+            })
         }, duration + 50)
     }
 
@@ -511,24 +513,29 @@ class Menu {
     }
 
     manageScroll() {
-        const { PerfectScrollbar } = window
+        const {
+            PerfectScrollbar
+        } = window
         const menuInner = document.querySelector('.menu-inner')
+        if (menuInner) {
 
-        if (window.innerWidth < window.Helpers.LAYOUT_BREAKPOINT) {
-            if (this._scrollbar !== undefined && this._scrollbar !== null) {
-                this._scrollbar.destroy();
-                this._scrollbar = null;
+
+            if (window.innerWidth < window.Helpers.LAYOUT_BREAKPOINT) {
+                if (this._scrollbar !== undefined && this._scrollbar !== null) {
+                    this._scrollbar.destroy();
+                    this._scrollbar = null;
+                }
+                menuInner.classList.add('overflow-auto')
+            } else {
+                if (this._scrollbar === null) {
+                    const menuScroll = new PerfectScrollbar(document.querySelector('.menu-inner'), {
+                        suppressScrollX: true,
+                        wheelPropagation: false
+                    })
+                    this._scrollbar = menuScroll
+                }
+                menuInner.classList.remove('overflow-auto')
             }
-            menuInner.classList.add('overflow-auto')
-        } else {
-            if (this._scrollbar === null) {
-                const menuScroll = new PerfectScrollbar(document.querySelector('.menu-inner'), {
-                    suppressScrollX: true,
-                    wheelPropagation: false
-                })
-                this._scrollbar = menuScroll
-            }
-            menuInner.classList.remove('overflow-auto')
         }
     }
 

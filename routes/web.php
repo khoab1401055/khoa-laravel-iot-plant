@@ -27,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth'])->group(function () {
+
     Route::prefix('devices')->group(function () {
         Route::get('devices-list', [LivewireRoutesController::class,'devicesList'])->name('devices.list')->middleware('menu.visibility');
         Route::get('devices-add', [LivewireRoutesController::class,'devicesAdd'])->name('devices.add')->middleware('menu.visibility');

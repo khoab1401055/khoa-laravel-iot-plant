@@ -1,9 +1,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ request()->segment(3) }} /</span> {{ __('messages.details') }} </h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> {{ $results->name_code }} /</span>
+        {{ __('messages.details') }} </h4>
 
     <div class="row">
-        <div class="col-8 order-0 d-flex">
+        <div class="col-8 order-0 d-flex" id="{{ __('messages.information') }}">
             <div class="card flex-fill">
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
@@ -41,29 +42,38 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 order-1 d-flex">
+        <div class="col-4 order-1 d-flex" id="{{ __('messages.location') }}">
             <div class="card flex-fill">
                 <div class="card-body">
                     <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                         <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between w-100">
                             <div class="card-title w-100">
-                                <h5 class="text-nowrap mb-2 text-primary fw-bold">{{ trans('messages.location') }}</h5>
+                                <h5 class="text-nowrap mb-2 text-primary fw-bold">{{ trans('messages.location_title') }}</h5>
                                 <ul class="list-group list-group-flush ">
                                     <li class="list-group-item">
-                                        <span class="fw-bold">{{ __('messages.address') }}:</span>  {{ $results->activeFarmLocation->address }}
+                                        <span class="fw-bold">{{ __('messages.location') }}:</span>
+                                        {{ $results->activeFarmLocation->location }}
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="fw-bold">{{ __('messages.street') }}:</span> {{ $results->activeFarmLocation->street }}
+                                        <span class="fw-bold">{{ __('messages.address') }}:</span>
+                                        {{ $results->activeFarmLocation->address }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="fw-bold">{{ __('messages.street') }}:</span>
+                                        {{ $results->activeFarmLocation->street }}
                                     </li>
 
                                     <li class="list-group-item">
-                                        <span class="fw-bold">{{ __('messages.town') }}:</span> {{ $results->activeFarmLocation->ward }}
+                                        <span class="fw-bold">{{ __('messages.town') }}:</span>
+                                        {{ $results->activeFarmLocation->ward }}
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="fw-bold">{{ __('messages.district') }}:</span> {{ $results->activeFarmLocation->district }}
+                                        <span class="fw-bold">{{ __('messages.district') }}:</span>
+                                        {{ $results->activeFarmLocation->district }}
                                     </li>
                                     <li class="list-group-item">
-                                        <span class="fw-bold">{{ __('messages.city') }}:</span>  {{ $results->activeFarmLocation->city }}
+                                        <span class="fw-bold">{{ __('messages.city') }}:</span>
+                                        {{ $results->activeFarmLocation->city }}
                                     </li>
                                     <li class="list-group-item p-0"></li>
 
@@ -80,4 +90,21 @@
 </div>
 
 @section('scripts')
+    <script>
+        Livewire.hook('message.processed', (message, component) => {
+            // console.log('Giá trị tìm kiếm:', @this.search);
+            var divIds = ['{{ __('messages.information') }}', '{{ __('messages.location') }}'];
+            divIds.forEach(function(id) {
+            var div = document.getElementById(id);
+            var searchLowerCase = @this.search.toLowerCase();
+            if (id.toLowerCase().indexOf(searchLowerCase) !== -1) {                // console.log(div);
+                div.style.display = 'block';
+                div.classList.add('d-flex');
+            } else {
+                div.style.display = 'none';
+                div.classList.remove('d-flex');
+            }
+        });
+        })
+    </script>
 @endsection

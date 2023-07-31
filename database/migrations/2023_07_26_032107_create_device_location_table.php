@@ -23,7 +23,7 @@ class CreateDeviceLocationTable extends Migration
             $table->string('street')->nullable();
             $table->string('district')->nullable();
             $table->string('ward')->nullable();
-            $table->string('city')->nullable();
+            $table->string('city');
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();
