@@ -3,8 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Customers;
+use App\Models\District;
 use App\Models\FarmLocation;
 use App\Models\Farms;
+use App\Models\Province;
+use App\Models\Ward;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -22,6 +25,10 @@ class FarmAdd extends Component
     public $district;
     public $ward;
     public $city;
+
+    public $province_id;
+    public $district_id;
+    public $ward_id;
 
     protected $lastInsertedId = null;
     public function mount()
@@ -41,11 +48,11 @@ class FarmAdd extends Component
             'customer_id' => 'required|exists:customers,id',
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
-            'location' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'street' => 'nullable|string|max:255',
-            'district' => 'nullable|string|max:255',
-            'ward' => 'nullable|string|max:255',
+            'location' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'ward' => 'required|string|max:255',
             'city' => 'required|string|max:255',
         ]);
 
@@ -78,8 +85,23 @@ class FarmAdd extends Component
 
     public function render()
     {
+        $provinces = Province::orderBy('name','asc')->get();
+        $districts = [];
+        $wards = [];
+
+        if ($this->province_id) {
+            $districts = District::where('province_id', $this->province_id)->orderBy('name','asc')->get();
+        }
+
+        if ($this->district_id) {
+            $wards = Ward::where('district_id', $this->district_id)->orderBy('name','asc')->get();
+        }
         $customers = Customers::all(); // Lấy danh sách customers từ cơ sở dữ liệu
-        return view('livewire.farm-add',compact('customers'));
+        return view('livewire.farm-add',['provinces' => $provinces,
+        'districts' => $districts,
+        'wards' => $wards,
+        'customers'=>$customers
+    ]);
     }
     public function generateNameCode()
     {

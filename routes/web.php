@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('menu.visibility');
 
+Route::get('/provinces-api', [App\Http\Controllers\HomeController::class, 'provincesAPI'])->name('provinces')->middleware('menu.visibility');
 
 
 Route::middleware(['auth'])->group(function () {

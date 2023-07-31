@@ -18,11 +18,11 @@ class CreateDeviceLocationTable extends Migration
             $table->unsignedBigInteger('farm_id');
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
-            $table->string('location')->nullable();
-            $table->string('address')->nullable();
-            $table->string('street')->nullable();
-            $table->string('district')->nullable();
-            $table->string('ward')->nullable();
+            $table->string('location');
+            $table->string('address');
+            $table->string('street');
+            $table->string('district');
+            $table->string('ward');
             $table->string('city');
             $table->boolean('is_active')->default(true);
 

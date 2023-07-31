@@ -27,7 +27,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $createPostPermission = Permission::create(['name' => 'create_post']);
         $editPostPermission = Permission::create(['name' => 'edit_post']);
         $deletePostPermission = Permission::create(['name' => 'delete_post']);
-        $onlyViewPostPermission = Permission::create(['name' => 'only_view']);
+        $onlyViewPostPermission = Permission::create(['name' => 'view_post']);
 
         // Assign permissions to roles
         $superAdminRole->syncPermissions([
