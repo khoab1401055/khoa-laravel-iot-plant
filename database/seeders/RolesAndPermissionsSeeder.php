@@ -20,14 +20,14 @@ class RolesAndPermissionsSeeder extends Seeder
         $adminRole = Role::create(['name' => 'Admin']);
         $editorRole = Role::create(['name' => 'Editor']);
         $userRole = Role::create(['name' => 'User']);
-        $userRole = Role::create(['name' => 'Monitor']);
+        $MonitorRole = Role::create(['name' => 'Monitor']);
 
         // Create permissions
         $manageUsersPermission = Permission::create(['name' => 'manage_users']);
         $createPostPermission = Permission::create(['name' => 'create_post']);
         $editPostPermission = Permission::create(['name' => 'edit_post']);
         $deletePostPermission = Permission::create(['name' => 'delete_post']);
-        $deletePostPermission = Permission::create(['name' => 'only_view']);
+        $onlyViewPostPermission = Permission::create(['name' => 'only_view']);
 
         // Assign permissions to roles
         $superAdminRole->syncPermissions([
@@ -51,5 +51,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $userRole->syncPermissions([
             $createPostPermission,
         ]);
+        $MonitorRole->syncPermissions([
+            $onlyViewPostPermission,
+        ]);
+
+
     }
 }
