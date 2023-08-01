@@ -5,9 +5,9 @@ return [
     'greeting' => 'Xin chào, :name!',
     'location' => 'Vị trí',
     'dashboard' => 'Trang Quảng Trị',
-    'farms' => 'Nông Trại',
-    'farms.list' => 'Danh Sách Nông Trại',
-    'farms.add' => 'Thêm Nông Trại',
+    'farms' => 'Nông trại',
+    'farms.list' => 'Danh Sách Nông trại',
+    'farms.add' => 'Thêm Nông trại',
 
     'languages' => 'Ngôn Ngữ',
     'address' => 'Địa Chỉ',
@@ -174,7 +174,7 @@ return [
     'error_logs' => 'Nhật Ký Lỗi',
     'system_logs' => 'Nhật Ký Hệ Thống',
     'user_logs' => 'Nhật Ký Người Dùng',
-    'reports' => 'Báo Cáo',
+    'reports' => 'Báo cáo',
     'financial_reports' => 'Báo Cáo Tài Chính',
     'sales_reports' => 'Báo Cáo Bán Hàng',
     'inventory_reports' => 'Báo Cáo Tồn Kho',
@@ -396,12 +396,20 @@ return [
     'farm_family_trip' => 'Chuyến đi gia đình đến nông trại',
     'information'=>'Thông Tin',
     'location_title'=>'Thông Tin Vị Trí',
-    'name_code'=>'Mã Nông Trại',
+    'name_code'=>'Mã nông trại',
     'description'=>'Mô Tả',
     'customer_select' => 'Chọn Khách Hàng',
     'create' => 'Tạo',
-    'farm' => 'Nông Trại',
+    'farm' => 'Nông trại',
     'ward'=>'Thị Trấn',
+    'master_data_list' => 'Danh sách dữ liệu',
+    'visible' => 'Hiển thị',
+    'id'=>'ID',
+    'alias'=>'Tên định danh',
+    'related_table'=>'Bảng liên kết',
+    'related_column'=>'Cột liên kết',
+
+
 
 
 

@@ -13,7 +13,7 @@
                     <p class="card-text small mb-0">
                         <i class='bx bxs-pencil' ></i> {{ $device->name }}
                     </p>
-                    <p class="card-text  small">
+                    <p class="card-text small">
 
                         <i class='bx bx-captions' ></i> {{ $device->name_alias }}
                     </p>

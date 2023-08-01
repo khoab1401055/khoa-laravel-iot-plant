@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(DevicesMasterSeeder::class);
+        $this->call(SensorNodeSeeder::class);
 
         $this->call(DeviceLocationSeeder::class);
         $this->call(SerialNumbersSeeder::class);

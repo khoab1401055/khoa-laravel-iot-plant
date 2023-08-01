@@ -20,6 +20,7 @@ class CreateDevicesMasterTable extends Migration
             $table->string('name_alias')->nullable();
             $table->float('weight')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('sensor_node_id')->nullable(); // Thêm khóa ngoại sensor_node_id để liên kết với bảng sensor_nodes
             $table->unsignedBigInteger('delivery_status_id')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable(); // Thêm cột updated_by
             $table->unsignedBigInteger('created_by')->nullable(); // Thêm cột created_by

@@ -29,15 +29,20 @@ class LivewireRoutesController extends Controller
         return view('pages.farm_add');
     }
 
+    public function masterData()
+    {
+        // component_exists();
+        return view('pages.master_data');
+    }
 
 
     public function goToFarm(Request $request)
     {
         // component_exists();
-        $farm = Farms::with('customer','activeFarmLocation')->where('name_code', $request->name)->first();
+        $farm = Farms::with('customer', 'activeFarmLocation', 'sensorNodes')->where('name_code', $request->name)->first();
         if (!$farm) {
             abort(404);
         }
-        return view('pages.goto_farm',compact('farm'));
+        return view('pages.goto_farm', compact('farm'));
     }
 }

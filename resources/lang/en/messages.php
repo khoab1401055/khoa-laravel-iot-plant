@@ -399,5 +399,15 @@ return [
     'location_title' => 'Location Information',
     'name_code' => 'Name Code',
     'description' => 'Description',
-    'customer_select' => 'Customer Select'
+    'customer_select' => 'Customer Select',
+    'master_data_list' => 'Master List',
+    'visible' => 'Visible',
+    'id'=>'ID',
+     'alias'=>'Alias',
+    'related_table'=>'Related Table',
+    'related_column'=>'Realated Column',
+
+
+
+
 ];

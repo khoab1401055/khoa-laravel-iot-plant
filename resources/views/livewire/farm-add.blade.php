@@ -6,7 +6,7 @@
 
 
         <div class="container mt-8">
-            <form wire:submit.prevent="createFarm">
+            <form wire:submit.prevent="createFarm" >
                 <div class='card mb-3'>
                     <div class="card-body">
                         <h5 class="card-title fw-bold">{{ __('messages.description') }}</h5>
@@ -67,24 +67,24 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-
                             <div class="mb-3 col-6">
-                                <label for="province" class="form-label">{{ __('messages.province') }} <span class="text-danger">*</span></label>
-                                <select class="form-control" id="province" wire:model.defer="city">
+                                <label for="province" class="form-label">{{ __('messages.province') }} <span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control" id="city" wire:model.defer="city" wire:change="updateCity($event.target.value)">
                                     <option value="">-- Select Province --</option>
                                     @foreach ($provinces as $province)
                                         <option value="{{ $province->id }}">{{ $province->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('city')
-                                    <!-- Hiển thị lỗi cho trường 'province_id' -->
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="mb-3 col-6">
-                                <label for="district" class="form-label">{{ __('messages.district') }} <span class="text-danger">*</span></label>
-                                <select class="form-control" id="district" wire:model.defer="district">
+                                <label for="district" class="form-label">{{ __('messages.district') }} <span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control" id="district" wire:model.defer="district" wire:change="updateDistrict($event.target.value)">
                                     <option value="">-- Select District --</option>
                                     @foreach ($districts as $district)
                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -97,7 +97,8 @@
                             </div>
 
                             <div class="mb-3 col-6">
-                                <label for="ward" class="form-label">{{ __('messages.town') }} <span class="text-danger">*</span></label>
+                                <label for="ward" class="form-label">{{ __('messages.town') }} <span
+                                        class="text-danger">*</span></label>
                                 <select class="form-control" id="ward" wire:model.defer="ward">
                                     <option value="">-- Select Ward --</option>
                                     @foreach ($wards as $ward)
@@ -113,7 +114,7 @@
 
                             <div class="mb-3 col-6">
                                 <label for="street" class="form-label">{{ __('messages.street') }} <span
-                                    class="text-danger">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="street" wire:model.defer="street">
                                 @error('street')
                                     <!-- Hiển thị lỗi cho trường 'street' -->
@@ -122,8 +123,9 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="address" class="form-label">{{ __('messages.address') }} <span
-                                    class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="address" wire:model.defer="address">
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="address"
+                                    wire:model.defer="address">
                                 @error('address')
                                     <!-- Hiển thị lỗi cho trường 'address' -->
                                     <span class="text-danger">{{ $message }}</span>
@@ -131,8 +133,9 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label for="location" class="form-label">{{ __('messages.location') }} <span
-                                    class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="location" wire:model.defer="location">
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="location"
+                                    wire:model.defer="location">
                                 @error('location')
                                     <!-- Hiển thị lỗi cho trường 'location' -->
                                     <span class="text-danger">{{ $message }}</span>
@@ -159,4 +162,18 @@
 </div>
 
 @section('scripts')
+    {{-- <script>
+        document.addEventListener('turbolinks:load', function() {
+
+        $('select[id="city"]').on('change', function() {
+            @this.city = $(this).val();
+        })
+        $('select[id="district"]').on('change', function() {
+            @this.district = $(this).val();
+        })
+        $('select[id="ward"]').on('change', function() {
+            @this.ward = $(this).val();
+        })
+    });
+    </script> --}}
 @endsection

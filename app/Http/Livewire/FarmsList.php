@@ -12,6 +12,8 @@ class FarmsList extends Component
     public $search = '';
     public $column_search = ['description', 'name_code', 'is_active'];
     protected $listeners = ['search'];
+    public $sortColumn = '';
+    public $sortDirection = 'asc';
     public function render()
     {
         $keyword = trim($this->search);

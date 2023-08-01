@@ -81,26 +81,35 @@ class FarmAdd extends Component
 
         return redirect()->route('farms.list');
     }
+    public function updateCity($value)
+    {
+        $this->city = $value;
+    }
+    public function updateDistrict($value)
+    {
+        $this->district = $value;
+    }
 
     public function render()
     {
-        $provinces = Province::orderBy('name','asc')->get();
+        $provinces = Province::orderBy('name', 'asc')->get();
         $districts = [];
         $wards = [];
 
         if ($this->city) {
-            $districts = District::where('province_id', $this->city)->orderBy('name','asc')->get();
+            $districts = District::where('province_id', $this->city)->orderBy('name', 'asc')->get();
         }
 
         if ($this->district) {
-            $wards = Ward::where('district_id', $this->district)->orderBy('name','asc')->get();
+            $wards = Ward::where('district_id', $this->district)->orderBy('name', 'asc')->get();
         }
         $customers = Customers::all(); // Lấy danh sách customers từ cơ sở dữ liệu
-        return view('livewire.farm-add',['provinces' => $provinces,
-        'districts' => $districts,
-        'wards' => $wards,
-        'customers'=>$customers
-    ]);
+        return view('livewire.farm-add', [
+            'provinces' => $provinces,
+            'districts' => $districts,
+            'wards' => $wards,
+            'customers' => $customers
+        ]);
     }
     public function generateNameCode()
     {
@@ -108,7 +117,8 @@ class FarmAdd extends Component
         $nextId = $this->lastInsertedId + 1;
         $this->name_code = 'FARM' . str_pad($nextId, 3, '0', STR_PAD_LEFT);
     }
-    public function resetValaue(){
+    public function resetValaue()
+    {
         $this->description = '';
         $this->name_code = '';
         $this->customer_id = '';
@@ -121,5 +131,4 @@ class FarmAdd extends Component
         $this->ward = '';
         $this->city = '';
     }
-
 }

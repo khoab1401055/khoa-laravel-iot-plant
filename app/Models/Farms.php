@@ -29,4 +29,8 @@ class Farms extends Model
             $farm->updated_by = Auth::id();
         });
     }
+    public function sensorNodes()
+    {
+        return $this->hasMany(SensorNodes::class, 'farm_id');
+    }
 }

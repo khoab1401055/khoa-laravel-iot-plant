@@ -17,14 +17,12 @@ class DevicesModuleSeeder extends Seeder
         DB::table('devices_module')->insert([
             'master_data_id' => 4,
             'devices_master_id' => 1,
-            // Thêm các trường khác mà bạn muốn lưu trong bảng devices_module
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         DB::table('devices_module')->insert([
             'master_data_id' => 4,
             'devices_master_id' => 2,
-            // Thêm các trường khác mà bạn muốn lưu trong bảng devices_module
             'created_at' => now(),
             'updated_at' => now(),
         ]);

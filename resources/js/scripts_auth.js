@@ -9,7 +9,6 @@ let searchTimeout;
 document.addEventListener('livewire:load', function() {
     document.addEventListener('turbolinks:load', () => {
 
-        // Get the search input element by its ID
         const searchInput = document.getElementById('searchInput');
 
         // Add an event listener to handle input changes
@@ -74,4 +73,63 @@ document.addEventListener('turbolinks:load', function() {
         });
         // Ví dụ, bạn có thể thực hiện một hành động khác ở đây
     }
+});
+
+// Edit table
+document.addEventListener('livewire:load', function() {
+
+    document.addEventListener('turbolinks:load', function() {
+
+        window.handleMenuItemClick = function(action, dataId) {
+            if (action === 'edit') {
+                // Gọi phương thức edit trong component Livewire
+                Livewire.emit('showEditModal', dataId);
+
+                $('#' + action + '_modal').modal('toggle');
+            }
+            hideContextMenu();
+        };
+        // Function to show the context menu when right-clicking on a table row
+        function showContextMenu(event) {
+            event.preventDefault();
+            hideContextMenu(); // Hide any existing context menu first
+
+            const contextMenu = $('#contextMenu');
+            contextMenu.css({
+                left: event.pageX + 'px',
+                top: event.pageY + 'px',
+            });
+            contextMenu.show();
+
+            // Get the data-id attribute from the clicked TD element and set it as the data-id for the contextMenu
+            const dataId = $(event.target).closest('td').data('id');
+            contextMenu.attr('data-id', dataId);
+        }
+
+        function hideContextMenu() {
+            const contextMenu = $('#contextMenu');
+            contextMenu.hide();
+            $('.table-row-clicked').removeClass('table-row-clicked'); // Remove the row highlight class
+        }
+
+        $(document).on('contextmenu', 'td', function(event) {
+            event.preventDefault();
+            showContextMenu(event);
+            $(this).closest('tr').addClass('table-row-clicked');
+        });
+
+        $(document).on('click', '#contextMenu a', function(event) {
+            event.preventDefault();
+            const action = this.id;
+            const dataId = $('#contextMenu').attr('data-id');
+            console.log(dataId);
+            handleMenuItemClick(action, dataId);
+        });
+
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('#contextMenu').length) {
+                hideContextMenu();
+            }
+        })
+    })
 });

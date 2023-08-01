@@ -94,16 +94,16 @@
               </li>
             </ul>
           </li>
-          <li class="menu-item">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
+          <li class="menu-item @if (Route::currentRouteName() == 'master.data') active open @endif">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-copy"></i>
               <div data-i18n="Master data">{{ __('messages.master_data') }}</div>
             </a>
             <ul class="menu-sub">
 
-              <li class="menu-item">
-                <a href="extended-ui-text-divider.html" class="menu-link">
-                  <div data-i18n="Text Divider">checking</div>
+              <li class="menu-item @if (Route::currentRouteName() == 'master.data') active @endif">
+                <a href="{{ route('master.data') }}" class="menu-link">
+                  <div data-i18n="Text Divider">{{ __('messages.master_data_list') }}</div>
                 </a>
               </li>
             </ul>

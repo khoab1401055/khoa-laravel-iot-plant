@@ -38,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('farm-add', [LivewireRoutesController::class,'farmAdd'])->name('farm.add')->middleware('menu.visibility');
         Route::get('detail/{name}', [LivewireRoutesController::class,'goToFarm'])->name('goto.farm');
     });
+
+    Route::prefix('administrator')->group(function () {
+        Route::get('master-data', [LivewireRoutesController::class,'masterData'])->name('master.data')->middleware('menu.visibility');
+    });
 });
 Route::post('change-language/{locale}', [HomeController::class, 'changeLanguage'])
     ->name('change.language');
