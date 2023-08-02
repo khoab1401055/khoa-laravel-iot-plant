@@ -104,13 +104,22 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input wire:model.defer="name" type="text" class="form-control" id="name">
+                                        <input wire:model.defer="name" type="text" class="form-control" id="name" disabled>
                                     </div>
                                     <div class="mb-3">
                                         <label for="alias" class="form-label">Alias</label>
                                         <input wire:model.defer="alias" type="text" class="form-control" id="alias">
                                     </div>
-
+                                    <div class="mb-3">
+                                        <label for="related_table" class="form-label">Related Table</label>
+                                        <input wire:model.defer="related_table" type="text" class="form-control"
+                                            id="related_table" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="related_column" class="form-label">Related Column</label>
+                                        <input wire:model.defer="related_column" type="text" class="form-control"
+                                            id="related_column" disabled>
+                                    </div>
 
                                 </form>
                             </div>

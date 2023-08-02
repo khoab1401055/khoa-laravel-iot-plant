@@ -34,6 +34,11 @@ class LivewireRoutesController extends Controller
         // component_exists();
         return view('pages.master_data');
     }
+    public function Monitoring()
+    {
+        // component_exists();
+        return view('pages.monitoring');
+    }
 
 
     public function goToFarm(Request $request)

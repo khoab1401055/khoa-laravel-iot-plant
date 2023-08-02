@@ -17952,6 +17952,16 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
     /* Tổng chiều cao cần hiển thị (3 hàng x 1.5em) */
 }
 
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Số dòng hiển thị tối đa */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5em;
+    height: 3em;
+}
+
 #nprogress .bar {
     background-color: var(--bs-primary);
 }
@@ -18043,6 +18053,22 @@ table tbody tr:hover {
 
 #contextMenu a:hover {
     cursor: pointer;
+}
+
+.border-dashed {
+    border: 1px dashed !important;
+}
+
+.border-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed;
+    flex: 1;
+}
+
+.no-indent {
+    padding-left: 1rem;
 }
 @charset "UTF-8";
 .authentication-wrapper {

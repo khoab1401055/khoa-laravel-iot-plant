@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MasterData extends Model
+class DevicesModule extends Model
 {
     use HasFactory;
-    protected $table = 'master_data';
+    protected $table = 'devices_module';
     protected $guarded = [];
-
-    public function devicesModules()
+    public function masterData()
     {
-        return $this->hasMany(DevicesModule::class, 'master_data_id');
+        return $this->belongsTo(MasterData::class, 'master_data_id');
     }
 }

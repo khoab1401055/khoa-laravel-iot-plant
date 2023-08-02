@@ -36,8 +36,8 @@ class MasterData extends Component
             $this->masterData = ModelsMasterData::findOrFail($id);
             $this->name = $this->masterData->name;
             $this->alias = $this->masterData->alias;
-            // $this->related_table = $this->masterData->related_table;
-            // $this->related_column = $this->masterData->related_column;
+            $this->related_table = $this->masterData->related_table;
+            $this->related_column = $this->masterData->related_column;
             return response()->json(['success' => true]);
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -46,12 +46,12 @@ class MasterData extends Component
     public function update()
     {
         $validatedData = Validator::make([
-            'name' => $this->name,
+            // 'name' => $this->name,
             'alias' => $this->alias,
             // 'related_table' => $this->related_table,
             // 'related_column' => $this->related_column,
         ], [
-            'name' => 'required',
+            // 'name' => 'required',
             'alias' => 'required',
             // 'related_table' => 'required',
             // 'related_column' => 'required',

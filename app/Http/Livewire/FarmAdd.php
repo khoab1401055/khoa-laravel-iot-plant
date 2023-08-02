@@ -7,6 +7,7 @@ use App\Models\District;
 use App\Models\FarmLocation;
 use App\Models\Farms;
 use App\Models\Province;
+use App\Models\SensorNodes;
 use App\Models\Ward;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -25,17 +26,17 @@ class FarmAdd extends Component
     public $district;
     public $ward;
     public $city;
-
+    public $selectedSensorNodeIds = [];
     public $province;
+    public $sensorNodes;
 
 
     protected $lastInsertedId = null;
     public function mount()
     {
-        // Lấy ID cuối cùng trong bảng farms
         $lastFarm = Farms::latest()->first();
         $this->lastInsertedId = $lastFarm ? $lastFarm->id : 0;
-        $this->generateNameCode(); // Gọi hàm để tự động tạo giá trị cho trường name_code
+        $this->generateNameCode();
     }
 
     public function createFarm()
@@ -74,6 +75,12 @@ class FarmAdd extends Component
             'created_by' => Auth::id(),
         ]);
 
+        if (!empty($this->selectedSensorNodeIds)) {
+            SensorNodes::whereIn('id', $this->selectedSensorNodeIds)->update([
+                'farm_id' => $farm->id,
+            ]);
+        }
+
         $this->resetValaue();
 
         session()->flash('message', 'Farm created successfully!');
@@ -104,11 +111,16 @@ class FarmAdd extends Component
             $wards = Ward::where('district_id', $this->district)->orderBy('name', 'asc')->get();
         }
         $customers = Customers::all(); // Lấy danh sách customers từ cơ sở dữ liệu
+        $this->sensorNodes = SensorNodes::whereNull('farm_id')
+            ->whereNotIn('id', $this->selectedSensorNodeIds)
+            ->get();
+
         return view('livewire.farm-add', [
             'provinces' => $provinces,
             'districts' => $districts,
             'wards' => $wards,
-            'customers' => $customers
+            'customers' => $customers,
+            'sensorNodes' => $this->sensorNodes,
         ]);
     }
     public function generateNameCode()
@@ -130,5 +142,19 @@ class FarmAdd extends Component
         $this->district = '';
         $this->ward = '';
         $this->city = '';
+    }
+    public function selectSensorNode($sensorNodeId)
+    {
+        if (in_array($sensorNodeId, $this->selectedSensorNodeIds)) {
+            $this->selectedSensorNodeIds = array_diff($this->selectedSensorNodeIds, [$sensorNodeId]);
+        } else {
+            $this->selectedSensorNodeIds[] = $sensorNodeId;
+        }
+        $this->dispatchBrowserEvent('modalClosed');
+    }
+    public function cancelSelectSensorNode($sensorNodeId)
+    {
+        // Loại bỏ sensor node khỏi danh sách sensor nodes đã được chọn
+        $this->selectedSensorNodeIds = array_diff($this->selectedSensorNodeIds, [$sensorNodeId]);
     }
 }

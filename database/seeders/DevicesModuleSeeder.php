@@ -32,5 +32,23 @@ class DevicesModuleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        DB::table('devices_module')->insert([
+            'master_data_id' => 1,
+            'devices_master_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('devices_module')->insert([
+            'master_data_id' => 1,
+            'devices_master_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('devices_module')->insert([
+            'master_data_id' => 2,
+            'devices_master_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

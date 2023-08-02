@@ -34,8 +34,9 @@
 
         <li class="menu-item @if (in_array(Route::currentRouteName(), ['farms.list','farm.add'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Layouts">{{ __('messages.farms') }}</div>
+                {{-- <i class=" bx bx-detail"></i> --}}
+                <i class='menu-icon tf-icons bx bx-directions' ></i>
+                                      <div data-i18n="Form Layouts">{{ __('messages.farms') }}</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item @if (Route::currentRouteName() == 'farms.list') active @endif">
@@ -69,8 +70,8 @@
             </ul>
         </li>
         <!-- Tables -->
-        <li class="menu-item">
-            <a href="tables-basic.html" class="menu-link">
+        <li class="menu-item @if (Route::currentRouteName() == 'monitoring') active @endif">
+            <a href="{{ route('monitoring') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables"> {{ __('messages.monitoring') }} </div>
             </a>

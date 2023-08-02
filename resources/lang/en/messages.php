@@ -406,6 +406,16 @@ return [
      'alias'=>'Alias',
     'related_table'=>'Related Table',
     'related_column'=>'Realated Column',
+'device_add_tofarm'=> 'Add Sensor Nodes',
+'Module Type'=>'Module Type',
+'Device Type'=>'Device Type',
+'Compatible' =>'Compatible',
+'Main' =>'Main Sensor',
+'Module'=> 'Module',
+'Wifi'=> 'Wifi',
+
+
+
 
 
 

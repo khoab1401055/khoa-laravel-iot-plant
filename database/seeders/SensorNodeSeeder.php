@@ -33,5 +33,24 @@ class SensorNodeSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        DB::table('sensor_nodes')->insert([
+            'name' => 'Sensor Node 3',
+            'description' => 'Mô tả Sensor Node 3',
+            'farm_id' => null, // Thay 1 bằng id của farm tương ứng
+            'created_by' => 1,
+            'updated_by' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('sensor_nodes')->insert([
+            'name' => 'Sensor Node 4',
+            'description' => 'Mô tả Sensor Node 4',
+            'farm_id' => null, // Thay 1 bằng id của farm tương ứng
+            'created_by' => 1,
+            'updated_by' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
     }
 }

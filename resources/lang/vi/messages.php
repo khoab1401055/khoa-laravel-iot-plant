@@ -408,6 +408,15 @@ return [
     'alias'=>'Tên định danh',
     'related_table'=>'Bảng liên kết',
     'related_column'=>'Cột liên kết',
+    'device_add_tofarm'=> 'Thêm nhóm cảm biến',
+    'Module Type'=>'Loại cảm biến',
+    'Device Type'=>'Loại thiết bị',
+    'Compatible' =>'Mạch lập trình',
+    'Main' =>'Mạch chính',
+    'Module'=> 'Mạch module',
+    'Wifi'=> 'Mạch Wifi',
+
+
 
 
 
