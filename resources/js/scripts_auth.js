@@ -10,18 +10,20 @@ document.addEventListener('livewire:load', function() {
     document.addEventListener('turbolinks:load', () => {
 
         const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            // Add an event listener to handle input changes
+            searchInput.addEventListener('input', function(event) {
+                clearTimeout(searchTimeout);
+                const searchValue = event.target.value;
 
-        // Add an event listener to handle input changes
-        searchInput.addEventListener('input', function(event) {
-            clearTimeout(searchTimeout);
-            const searchValue = event.target.value;
+                // Perform a Livewire action using the "search" method on the component
+                searchTimeout = setTimeout(function() {
+                    // console.log('check: ' + Date.now());
+                    Livewire.emit('search', searchValue);
+                }, 500);
+            });
+        }
 
-            // Perform a Livewire action using the "search" method on the component
-            searchTimeout = setTimeout(function() {
-                // console.log('check: ' + Date.now());
-                Livewire.emit('search', searchValue);
-            }, 500);
-        });
     });
 });
 
@@ -85,7 +87,10 @@ document.addEventListener('livewire:load', function() {
                 // Gọi phương thức edit trong component Livewire
                 Livewire.emit('showEditModal', dataId);
 
-                $('#' + action + '_modal').modal('toggle');
+                $('#' + action + '_modal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                }).modal('show');
             }
             hideContextMenu();
         };
@@ -132,4 +137,16 @@ document.addEventListener('livewire:load', function() {
             }
         })
     })
+
 });
+
+window.addEventListener('modalClosed', event => {
+
+    var modal = $('.modal:visible');
+    // Ẩn modal đang hiển thị
+    modal.modal({
+        backdrop: 'static',
+        keyboard: false
+    }).modal('hide');
+
+})

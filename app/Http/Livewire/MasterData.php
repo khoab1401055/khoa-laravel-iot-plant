@@ -4,13 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\MasterData as ModelsMasterData;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class MasterData extends Component
 {
     use WithPagination;
-    protected $listeners = ['search','showEditModal'];
+    protected $listeners = ['search', 'showEditModal'];
     public $search = '';
     public $column_search = ['id', 'name', 'alias', 'related_table', 'related_column'];
     public $sortColumn = '';
@@ -31,30 +32,52 @@ class MasterData extends Component
     }
     public function showEditModal($id)
     {
-        try{
+        try {
             $this->masterData = ModelsMasterData::findOrFail($id);
             $this->name = $this->masterData->name;
             $this->alias = $this->masterData->alias;
-            $this->related_table = $this->masterData->related_table;
-            $this->related_column = $this->masterData->related_column;
-            $this->status = $this->masterData->status;
-        }catch(Exception $e){
+            // $this->related_table = $this->masterData->related_table;
+            // $this->related_column = $this->masterData->related_column;
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
             dd($e->getMessage());
         }
-
     }
     public function update()
     {
-        $this->masterData->update([
+        $validatedData = Validator::make([
             'name' => $this->name,
             'alias' => $this->alias,
-            'related_table' => $this->related_table,
-            'related_column' => $this->related_column,
-            'status' => $this->status,
-            // Các trường khác tùy ý
+            // 'related_table' => $this->related_table,
+            // 'related_column' => $this->related_column,
+        ], [
+            'name' => 'required',
+            'alias' => 'required',
+            // 'related_table' => 'required',
+            // 'related_column' => 'required',
         ]);
 
-        // Sau khi cập nhật xong, ẩn modal edit
+        if ($validatedData->fails()) {
+            // Xử lý lỗi tùy ý và trả về thông báo lỗi nếu cần.
+            $errors = $validatedData->errors();
+            $errorMessages = $errors->all();
+
+            $errorString = implode('<br>', $errorMessages);
+
+            $this->dispatchBrowserEvent('alert', ['type' => 'error', 'message' => $errorString, 'title' => '']);
+
+        }else{
+
+            try {
+                $this->masterData->update($validatedData->validated());
+                $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Cập nhật thành công!', 'title' => '']);
+                $this->dispatchBrowserEvent('modalClosed');
+            } catch (\Exception $e) {
+                // Nếu có lỗi, gửi sự kiện "alert" với loại "error" và thông báo lỗi
+                $this->dispatchBrowserEvent('alert', ['type' => 'error', 'message' => 'Có lỗi xảy ra khi cập nhật!', 'title' => 'Lỗi']);
+            }
+        }
+
     }
 
     public function render()

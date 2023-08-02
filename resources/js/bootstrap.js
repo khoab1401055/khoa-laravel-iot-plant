@@ -1,4 +1,6 @@
 window._ = require('lodash');
+// window.$ = require('jquery');
+
 import Turbolinks from 'turbolinks';
 import NProgress from 'nprogress';
 try {

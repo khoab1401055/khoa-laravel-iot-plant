@@ -51,8 +51,8 @@
         </div>
     @endguest
     <div id='loading'></div>
-    @guest
-    @else
+    <script src="{{ asset('js/jquery-3.7.0.js') }}" data-turbolinks-eval="false"></script>
+
         <script src="{{ asset('js/helpers.js') }}" defer></script>
 
         @if (isset($showMenu) && $showMenu)
@@ -66,9 +66,21 @@
         @livewireScripts
         <script src="{{ mix('js/scripts_auth.js') }}" defer></script>
 
-    @endguest
     @yield('scripts')
     <script src="{{ mix('js/scripts.js') }}" defer></script>
+    <script>
+        window.addEventListener('alert', event => {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "preventDuplicates": true // Tùy chọn duy nhất
+            };
+            toastr[event.detail.type](event.detail.message,
+                event.detail.title ?? '');
+
+        });
+    </script>
+
 </body>
 
 </html>

@@ -89,45 +89,38 @@
 
                     </div>
                 </div>
-                <div wire:ignore.self class="modal fade" id="edit_modal" aria-labelledby="editModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Master Data</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input wire:model="name" type="text" class="form-control" id="name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alias" class="form-label">Alias</label>
-                                    <input wire:model="alias" type="text" class="form-control" id="alias">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="related_table" class="form-label">Related Table</label>
-                                    <input wire:model="related_table" type="text" class="form-control" id="related_table">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="related_column" class="form-label">Related Column</label>
-                                    <input wire:model="related_column" type="text" class="form-control" id="related_column">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <input wire:model="status" type="text" class="form-control" id="status">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button wire:click="update" type="button" class="btn btn-primary">Save</button>
+                <div wire:ignore.self class="modal fade" id="edit_modal" aria-labelledby="edit_modal"
+                    aria-hidden="true">
+
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="edit_modal">Edit Master Data</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input wire:model.defer="name" type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alias" class="form-label">Alias</label>
+                                        <input wire:model.defer="alias" type="text" class="form-control" id="alias">
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button wire:click="update" type="button" class="btn btn-primary">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             </div>
         </div>
@@ -138,5 +131,4 @@
 </div>
 
 @section('scripts')
-
 @endsection
