@@ -89,7 +89,7 @@
                 </a>
               </li>
               <li class="menu-item">
-                <a href="pages-account-settings-notifications.html" class="menu-link">
+                <a href="javascript:void(0);" class="menu-link">
                   <div data-i18n="Notifications"> {{ __('messages.reports') }}</div>
                 </a>
               </li>
@@ -113,7 +113,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
 
         <li class="menu-item">
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+            <a href="#"
                 target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
