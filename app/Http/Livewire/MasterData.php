@@ -73,7 +73,6 @@ class MasterData extends Component
                 $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Cập nhật thành công!', 'title' => '']);
                 $this->dispatchBrowserEvent('modalClosed');
             } catch (\Exception $e) {
-                // Nếu có lỗi, gửi sự kiện "alert" với loại "error" và thông báo lỗi
                 $this->dispatchBrowserEvent('alert', ['type' => 'error', 'message' => 'Có lỗi xảy ra khi cập nhật!', 'title' => 'Lỗi']);
             }
         }

@@ -3,7 +3,6 @@
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Master /</span> List</h4>
 
     <div class="row">
-        <!-- resources/views/livewire/master-data-list.blade.php -->
         <div class="card">
             <div class="card-body">
 

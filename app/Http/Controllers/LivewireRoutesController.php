@@ -40,6 +40,12 @@ class LivewireRoutesController extends Controller
         return view('pages.monitoring');
     }
 
+    public function accountList()
+    {
+        // component_exists();
+        return view('pages.accountList');
+    }
+
 
     public function goToFarm(Request $request)
     {

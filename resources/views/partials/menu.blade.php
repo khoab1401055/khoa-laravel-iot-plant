@@ -77,14 +77,14 @@
             </a>
         </li>
         <li class="menu-header small text-uppercase"><span class="menu-header-text">{{ __('messages.administrator') }}</span></li>
-        <li class="menu-item">
+        <li class="menu-item @if (in_array(Route::currentRouteName(), ['account.list'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">{{ __('messages.accounts.setting') }}</div>
             </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="pages-account-settings-account.html" class="menu-link">
+            <ul class="menu-sub ">
+              <li class="menu-item @if (Route::currentRouteName() == 'account.list') active @endif">
+                <a href="{{ route('account.list') }}" class="menu-link">
                   <div data-i18n="Account"> {{ __('messages.accounts') }}</div>
                 </a>
               </li>

@@ -94,18 +94,16 @@ document.addEventListener('livewire:load', function() {
             }
             hideContextMenu();
         };
-        // Function to show the context menu when right-clicking on a table row
+
         function showContextMenu(event) {
             event.preventDefault();
             hideContextMenu(); // Hide any existing context menu first
-
             const contextMenu = $('#contextMenu');
             contextMenu.css({
                 left: event.pageX + 'px',
                 top: event.pageY + 'px',
             });
             contextMenu.show();
-
             // Get the data-id attribute from the clicked TD element and set it as the data-id for the contextMenu
             const dataId = $(event.target).closest('td').data('id');
             contextMenu.attr('data-id', dataId);
@@ -127,7 +125,6 @@ document.addEventListener('livewire:load', function() {
             event.preventDefault();
             const action = this.id;
             const dataId = $('#contextMenu').attr('data-id');
-            console.log(dataId);
             handleMenuItemClick(action, dataId);
         });
 
