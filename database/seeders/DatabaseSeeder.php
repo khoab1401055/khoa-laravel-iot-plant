@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DevicesModuleSeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(FarmSeeder::class);
+        $this->call(TranslationsSeeder::class);
+        $this->call(TranslationsSeederVi::class);
 
         // use iotplant;
         // SELECT devices_master.name, devices_master.device_id, devices_master.name_alias,Type_Table.type_name,Module_Table.module_name FROM devices_master

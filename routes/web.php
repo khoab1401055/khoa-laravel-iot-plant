@@ -41,7 +41,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('administrator')->group(function () {
         Route::get('master-data', [LivewireRoutesController::class,'masterData'])->name('master.data')->middleware('menu.visibility');
+        Route::get('accounts-report', [LivewireRoutesController::class,'accountsReport'])->name('accounts.reports')->middleware('menu.visibility');
         Route::get('account-list', [LivewireRoutesController::class,'accountList'])->name('account.list')->middleware('menu.visibility');
+        Route::get('language', [LivewireRoutesController::class,'dataLanguage'])->name('master.data.language')->middleware('menu.visibility');
+
 
     });
         Route::get('monitoring', [LivewireRoutesController::class,'Monitoring'])->name('monitoring')->middleware('menu.visibility');

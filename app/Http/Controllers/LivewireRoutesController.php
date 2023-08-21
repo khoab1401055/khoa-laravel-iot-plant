@@ -45,6 +45,16 @@ class LivewireRoutesController extends Controller
         // component_exists();
         return view('pages.accountList');
     }
+    public function accountsReport()
+    {
+        // component_exists();
+        return view('pages.accounts_report');
+    }
+    public function dataLanguage()
+    {
+        // component_exists();
+        return view('pages.data_language');
+    }
 
 
     public function goToFarm(Request $request)

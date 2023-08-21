@@ -88,26 +88,32 @@
                   <div data-i18n="Account"> {{ __('messages.accounts') }}</div>
                 </a>
               </li>
-              <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link">
+              <li class="menu-item @if (Route::currentRouteName() == 'accounts.report') active @endif">
+                <a href="{{ route('accounts.reports') }}" class="menu-link">
                   <div data-i18n="Notifications"> {{ __('messages.reports') }}</div>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="menu-item @if (Route::currentRouteName() == 'master.data') active open @endif">
+          <li class="menu-item @if (in_array(Route::currentRouteName(), ['master.data', 'master.data.language'])) active open @endif">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-copy"></i>
               <div data-i18n="Master data">{{ __('messages.master_data') }}</div>
             </a>
             <ul class="menu-sub">
-
               <li class="menu-item @if (Route::currentRouteName() == 'master.data') active @endif">
                 <a href="{{ route('master.data') }}" class="menu-link">
                   <div data-i18n="Text Divider">{{ __('messages.master_data_list') }}</div>
                 </a>
               </li>
             </ul>
+            <ul class="menu-sub">
+                <li class="menu-item @if (Route::currentRouteName() == 'master.data.language') active @endif">
+                  <a href="{{ route('master.data.language') }}" class="menu-link">
+                    <div data-i18n="Text Divider">{{ __('messages.master_data_language') }}</div>
+                  </a>
+                </li>
+              </ul>
           </li>
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>

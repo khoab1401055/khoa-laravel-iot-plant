@@ -10,7 +10,7 @@
         <div class="navbar-nav align-items-center w-100">
             <div class="nav-item d-flex align-items-center w-100">
                 <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" wire:model="search"  id="searchInput"class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                <input type="text" wire:model.debounce.500ms="search" id="searchInput" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
             </div>
         </div>
         <ul class="navbar-nav ms-auto">

@@ -25,7 +25,6 @@ class CreateDeviceLocationTable extends Migration
             $table->string('ward');
             $table->string('city');
             $table->boolean('is_active')->default(true);
-
             $table->timestamps();
             $table->unsignedBigInteger('updated_by')->nullable(); // Thêm cột updated_by
             $table->unsignedBigInteger('created_by')->nullable(); // Thêm cột created_by
@@ -40,6 +39,6 @@ class CreateDeviceLocationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('device_location');
+        Schema::dropIfExists('farm_location');
     }
 }
