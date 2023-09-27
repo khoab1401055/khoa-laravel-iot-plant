@@ -17,6 +17,8 @@ class CreateMasterDataTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('alias')->nullable();
+            $table->text('description')->nullable();
+
             $table->string('related_table')->nullable(); // Cột lưu tên bảng liên kết
             $table->string('related_column')->nullable(); // Cột lưu tên cột liên kết
             $table->string('status')->nullable();

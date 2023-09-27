@@ -6,11 +6,7 @@
 @section('title', 'Home')
 
 @section('content')
-
-
-
-
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 container-p-y loading-hide">
         <div class="row">
             <div class="col-lg-8 mb-4 order-0" id="welcome_plate">
                 <div class="card">
@@ -490,50 +486,50 @@
             </div>
         </div>
         @can('manage_users')
-        <div class="col-lg-12">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Permissions</th>
-                        <th>Roles</th>
-                        <th>Default Role Permissions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                            <ul>
-                                @foreach ($user->permissions as $permission)
-                                    <li>{{ $permission->name }}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                @foreach ($user->roles as $role)
-                                    <li>{{ $role->name }}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                @foreach ($user->roles as $role)
-                                    @foreach ($role->permissions as $permission)
-                                        <li>{{ $permission->name }}</li>
-                                    @endforeach
-                                @endforeach
-                            </ul>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Permissions</th>
+                            <th>Roles</th>
+                            <th>Default Role Permissions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <ul>
+                                        @foreach ($user->permissions as $permission)
+                                            <li>{{ $permission->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach ($user->roles as $role)
+                                            <li>{{ $role->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach ($user->roles as $role)
+                                            @foreach ($role->permissions as $permission)
+                                                <li>{{ $permission->name }}</li>
+                                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endcan
     </div>
 

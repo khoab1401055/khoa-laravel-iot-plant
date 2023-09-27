@@ -17,6 +17,7 @@ class CreateDevicesTypeTable extends Migration
             $table->id();
             $table->unsignedBigInteger('master_data_id');
             $table->unsignedBigInteger('devices_master_id');
+            $table->text('description')->nullable();
 
             // Thêm các trường khác mà bạn muốn lưu trong bảng devices_type
             $table->timestamps();

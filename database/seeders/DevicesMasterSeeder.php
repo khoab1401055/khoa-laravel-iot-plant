@@ -18,6 +18,7 @@ class DevicesMasterSeeder extends Seeder
             'name' => 'Arduino Mega 2560 Compatible',
             'device_id' => 'RMG2560',
             'name_alias' => 'Mạch Mega 2560 CH340',
+      
             'sensor_node_id' => 1,
             'weight' => 0.1,
             'is_active' => true,

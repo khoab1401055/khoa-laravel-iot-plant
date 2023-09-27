@@ -478,6 +478,14 @@ class TranslationsSeederVi extends Seeder
                 'female' => 'Nữ',
                 'other' => 'Khác',
                 'back' => 'Trở về',
+                'update_success' => 'Cập nhật thành công!',
+                'update_error' => 'Có lỗi xảy ra khi cập nhật.',
+                'error' => 'Lỗi',
+                'master_data_language'=>'Dịch ngôn ngữ',
+                'main'=>'Mạch chính',
+                'module'=>'Mạch Module'
+                
+
             ];
             $now = Carbon::now();
             foreach ($translations as $key => $value) {

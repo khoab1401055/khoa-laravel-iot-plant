@@ -35,20 +35,22 @@
                                 <tr>
                                     @if ($masterDataList->isNotEmpty())
                                         @foreach ($masterDataList->first()->getAttributes() as $column => $value)
-                                            <th scope="col">
-                                                <span wire:click="sort('{{ $column }}')" style="cursor: pointer;">
-                                                    {{ __('messages.' . $column) }}
-                                                    @if ($sortColumn === $column)
-                                                        @if ($sortDirection === 'asc')
-                                                            <i class='bx bx-up-arrow-alt'></i>
+                                            @if ($column !== 'id') <!-- Thêm điều kiện kiểm tra cột ID -->
+                                                <th scope="col">
+                                                    <span wire:click="sort('{{ $column }}')" style="cursor: pointer;">
+                                                        {{ __('messages.' . $column) }}
+                                                        @if ($sortColumn === $column)
+                                                            @if ($sortDirection === 'asc')
+                                                                <i class='bx bx-up-arrow-alt'></i>
+                                                            @else
+                                                                <i class='bx bx-down-arrow-alt'></i>
+                                                            @endif
                                                         @else
-                                                            <i class='bx bx-down-arrow-alt'></i>
+                                                            <i class='bx bx-sort-alt-2'></i>
                                                         @endif
-                                                    @else
-                                                        <i class='bx bx-sort-alt-2'></i>
-                                                    @endif
-                                                </span>
-                                            </th>
+                                                    </span>
+                                                </th>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </tr>
@@ -56,17 +58,20 @@
                             <tbody>
                                 <tr>
                                     @if ($masterDataList->isNotEmpty())
-
                                         @foreach ($masterDataList as $data)
-                                <tr>
-                                    @foreach ($data->getAttributes() as $value)
-                                        <td data-id="{{ $data->id }}">{{ $value }}</td>
-                                    @endforeach
+                                            <tr>
+                                                @foreach ($data->getAttributes() as $column => $value)
+                                                    @if ($column !== 'id') <!-- Thêm điều kiện kiểm tra cột ID -->
+                                                        <td data-id="{{ $data->id }}">{{ \Str::limit($value, 20) }}</td>
+                                                    @endif
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tr>
-                                @endforeach
-                                @endif
                             </tbody>
                         </table>
+
 
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             @if ($masterDataList->total() > 5)
@@ -111,6 +116,10 @@
                                         <input wire:model.defer="alias" type="text" class="form-control" id="alias">
                                     </div>
                                     <div class="mb-3">
+                                        <label for="description" class="form-label"></label>
+                                        <textarea class="form-control" wire:model.defer="description" id="description" cols="20" rows="5">{{ __('messages.description') }}</textarea>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="related_table" class="form-label">Related Table</label>
                                         <input wire:model.defer="related_table" type="text" class="form-control"
                                             id="related_table" disabled>
@@ -120,7 +129,7 @@
                                         <input wire:model.defer="related_column" type="text" class="form-control"
                                             id="related_column" disabled>
                                     </div>
-
+                                  
                                 </form>
                             </div>
                             <div class="modal-footer">

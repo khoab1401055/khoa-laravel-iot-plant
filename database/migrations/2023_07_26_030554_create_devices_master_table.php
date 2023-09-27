@@ -17,6 +17,8 @@ class CreateDevicesMasterTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('device_id');
+            $table->text('description')->nullable();
+
             $table->string('name_alias')->nullable();
             $table->float('weight')->nullable();
             $table->boolean('is_active')->default(true);

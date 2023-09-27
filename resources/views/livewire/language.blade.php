@@ -13,7 +13,7 @@
                     <button class="btn d-flex align-items-center" type="button" data-bs-toggle="modal"
                         data-bs-target="#add_model">
                         <i class="bx bx-folder-plus me-2"></i>
-                        Add
+                        {{ __('messages.add') }}
                     </button>
                 </li>
             </ul>
@@ -182,21 +182,21 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add Language</h5>
+                                    <h5 class="modal-title">  {{ __('messages.add') }}   {{ __('messages.languages') }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form>
                                         <div class="mb-3">
-                                            <label for="key_add" class="form-label">Key</label>
+                                            <label for="key_add" class="form-label">{{ __('messages.key') }}</label>
                                             <input wire:model.defer="key_add" type="text" class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="value_add_vi" class="form-label">Value (Vietnamese)</label>
+                                            <label for="value_add_vi" class="form-label">{{ __('messages.value') }} ({{ __('messages.vietnam') }})</label>
                                             <input wire:model.defer="value_add_vi" type="text" class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="value_add_en" class="form-label">Value (English)</label>
+                                            <label for="value_add_en" class="form-label">{{ __('messages.value') }} ({{ __('messages.english') }})</label>
                                             <input wire:model.defer="value_add_en" type="text" class="form-control">
                                         </div>
                                     </form>

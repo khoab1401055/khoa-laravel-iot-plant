@@ -21,6 +21,8 @@ class MasterDataSeeder extends Seeder
             'related_table' => 'devices_type',
             'related_column' => 'table_redirect',
             'status' => 1,
+            'description' => 'Mạch chính',
+
         ]);
         DB::table('master_data')->insert([
             'name' => 'Device Type',
@@ -28,6 +30,8 @@ class MasterDataSeeder extends Seeder
             'related_table' => 'devices_type',
             'related_column' => 'table_redirect',
             'status' => 1,
+            'description' => 'Mạch module',
+
         ]);
 
     // Module Type
@@ -37,6 +41,8 @@ class MasterDataSeeder extends Seeder
             'related_table' => 'devices_module',
             'related_column' => 'table_redirect',
             'status' => 1,
+            'description' => 'Module để kết nối wifi',
+
         ]);
 
         DB::table('master_data')->insert([
@@ -45,6 +51,7 @@ class MasterDataSeeder extends Seeder
             'related_table' => 'devices_module',
             'related_column' => 'table_redirect',
             'status' => 1,
+            'description' => 'Mạch có thể lập trình trên nó',
         ]);
         DB::table('master_data')->insert([
             'name' => 'Module Type',
@@ -52,6 +59,7 @@ class MasterDataSeeder extends Seeder
             'related_table' => 'devices_module',
             'related_column' => 'table_redirect',
             'status' => 1,
+            'description' => 'Mạch đo pH',
         ]);
         DB::table('master_data')->insert([
             'name' => 'Module Type',

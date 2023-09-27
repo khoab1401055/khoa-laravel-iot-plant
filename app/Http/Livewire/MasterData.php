@@ -7,17 +7,19 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\LoggableModel;
+use Illuminate\Support\Facades\DB;
 
 class MasterData extends Component
 {
     use WithPagination;
     protected $listeners = ['search', 'showEditModal'];
     public $search = '';
-    public $column_search = ['id', 'name', 'alias', 'related_table', 'related_column'];
+    public $column_search = ['id', 'name', 'alias', 'related_table', 'related_column','description'];
     public $sortColumn = '';
     public $sortDirection = 'asc';
     public $perPage = 10;
-
+    public $description;
     public $masterData;
     public $name;
     public $alias;
@@ -28,7 +30,7 @@ class MasterData extends Component
     protected $paginationTheme = 'bootstrap';
     public function mount()
     {
-        $this->gotoPage(1); // Go to page 1 and fetch the data
+        $this->gotoPage(1);
     }
     public function showEditModal($id)
     {
@@ -38,23 +40,22 @@ class MasterData extends Component
             $this->alias = $this->masterData->alias;
             $this->related_table = $this->masterData->related_table;
             $this->related_column = $this->masterData->related_column;
+            $this->description = $this->masterData->description;
+
+            
             return response()->json(['success' => true]);
         } catch (Exception $e) {
-            dd($e->getMessage());
         }
     }
     public function update()
     {
         $validatedData = Validator::make([
-            // 'name' => $this->name,
             'alias' => $this->alias,
-            // 'related_table' => $this->related_table,
-            // 'related_column' => $this->related_column,
+            'description' => $this->description,
+
         ], [
-            // 'name' => 'required',
             'alias' => 'required',
-            // 'related_table' => 'required',
-            // 'related_column' => 'required',
+            'description' => 'string|nullable',
         ]);
 
         if ($validatedData->fails()) {
@@ -70,10 +71,14 @@ class MasterData extends Component
 
             try {
                 $this->masterData->update($validatedData->validated());
-                $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Cập nhật thành công!', 'title' => '']);
+                $successMessage = __('messages.update_success'); 
+                $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => $successMessage, 'title' => '']);
                 $this->dispatchBrowserEvent('modalClosed');
             } catch (\Exception $e) {
-                $this->dispatchBrowserEvent('alert', ['type' => 'error', 'message' => 'Có lỗi xảy ra khi cập nhật!', 'title' => 'Lỗi']);
+                $errorMessage = __('messages.update_error');
+                $this->dispatchBrowserEvent('alert', ['type' => 'error', 'message' => $errorMessage, 'title' => __('messages.error')]);
+                LoggableModel::logCustomError($e->getMessage(), get_class($this).'['.__FUNCTION__.']');
+
             }
         }
 
@@ -84,7 +89,7 @@ class MasterData extends Component
         $keyword = trim($this->search);
 
         $masterDataList = ModelsMasterData::query()
-            ->select('id', 'name', 'alias', 'related_table', 'related_column');
+            ->select('id', 'name', 'alias', 'related_table', 'related_column','description');
 
         foreach ($this->column_search as $column) {
             $masterDataList->orWhere($column, 'LIKE', "%{$keyword}%");

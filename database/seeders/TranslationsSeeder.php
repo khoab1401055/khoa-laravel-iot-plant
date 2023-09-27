@@ -475,19 +475,24 @@ class TranslationsSeeder extends Seeder
                 'female' => 'Femail',
                 'other' => 'Other',
                 'back' => 'Back',
+                'update_success' => 'Update successful!',
+                'update_error' => 'An error occurred while updating.',
+                'error' => 'Error',
+                'master_data_language'=>'Translation',
+                'main'=>'Main',
+                'module'=>'Module'
             ];
             $now = Carbon::now();
             foreach ($translations as $key => $value) {
                 DB::table('translations')
-                ->where('language_code', 'en')
-                ->where('key', $key)
-                ->delete();
-
-            // Chèn hoặc cập nhật dữ liệu dịch
-            DB::table('translations')->updateOrInsert(
-                ['language_code' => 'en', 'key' => $key],
-                ['value' => $value, 'created_at' => $now, 'updated_at' => $now]
-            );
+                    ->where('language_code', 'en')
+                    ->where('key', $key)
+                    ->delete();
+                // Chèn hoặc cập nhật dữ liệu dịch
+                DB::table('translations')->updateOrInsert(
+                    ['language_code' => 'en', 'key' => $key],
+                    ['value' => $value, 'created_at' => $now, 'updated_at' => $now]
+                );
             }
 
             $this->command->info('Translations seeded successfully!');

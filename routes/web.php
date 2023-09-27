@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('menu.visibility');
 
-Route::get('/provinces-api', [App\Http\Controllers\HomeController::class, 'provincesAPI'])->name('provinces')->middleware('menu.visibility');
+// Route::get('/provinces-api', [App\Http\Controllers\HomeController::class, 'provincesAPI'])->name('provinces')->middleware('menu.visibility');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -44,8 +44,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('accounts-report', [LivewireRoutesController::class,'accountsReport'])->name('accounts.reports')->middleware('menu.visibility');
         Route::get('account-list', [LivewireRoutesController::class,'accountList'])->name('account.list')->middleware('menu.visibility');
         Route::get('language', [LivewireRoutesController::class,'dataLanguage'])->name('master.data.language')->middleware('menu.visibility');
-
-
     });
         Route::get('monitoring', [LivewireRoutesController::class,'Monitoring'])->name('monitoring')->middleware('menu.visibility');
 

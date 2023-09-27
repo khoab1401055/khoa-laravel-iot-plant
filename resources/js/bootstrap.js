@@ -6,9 +6,9 @@ import NProgress from 'nprogress';
 try {
     require('bootstrap');
     NProgress.configure({ showSpinner: false });
-
     Turbolinks.start();
-    // Turbolinks.setProgressBarDelay(200);
+    document.querySelector('body').classList.remove('disable-clicks');
+
     document.addEventListener('turbolinks:visit', function() {
         document.querySelector('body').classList.add('disable-clicks');
         NProgress.start();
@@ -16,7 +16,6 @@ try {
 
     document.addEventListener('turbolinks:request-end', function() {
         document.querySelector('body').classList.remove('disable-clicks');
-
         NProgress.done();
     });
     document.addEventListener('livewire:load', function() {
@@ -27,10 +26,10 @@ try {
 
         Livewire.hook('message.processed', function() {
             document.querySelector('body').classList.remove('disable-clicks');
-
             NProgress.done();
         });
     });
+
 } catch (e) {
     console.log(e);
 }

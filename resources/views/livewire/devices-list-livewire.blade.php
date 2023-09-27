@@ -1,5 +1,5 @@
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Devices /</span> List</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ __('messages.devices') }} /</span> {{ __('messages.list') }}</h4>
 
     <div class="row row-cols-1 row-cols-md-4 row-cols-lg-4 row-cols-sm-3 row-cols-xs-2 g-4 mb-5">
         @foreach ($devices as $device)
