@@ -359,7 +359,7 @@ class TranslationsSeeder extends Seeder
                 'device_list' => 'Device List',
                 'device_type' => 'Device Type',
                 'device_name' => 'Device Name',
-                'device_id' => 'Device ID',
+                'device_code' => 'Device ID',
                 'device_status' => 'Device Status',
                 'device_information' => 'Device Information',
                 'device_details' => 'Device Details',
@@ -480,7 +480,10 @@ class TranslationsSeeder extends Seeder
                 'error' => 'Error',
                 'master_data_language'=>'Translation',
                 'main'=>'Main',
-                'module'=>'Module'
+                'module'=>'Module',
+                'modify'=>'Modify',
+
+                
             ];
             $now = Carbon::now();
             foreach ($translations as $key => $value) {

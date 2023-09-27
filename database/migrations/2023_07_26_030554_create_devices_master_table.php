@@ -15,12 +15,8 @@ class CreateDevicesMasterTable extends Migration
     {
         Schema::create('devices_master', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('device_id');
-            $table->text('description')->nullable();
-
-            $table->string('name_alias')->nullable();
             $table->float('weight')->nullable();
+            $table->foreignId('device_description_id')->constrained('devices_description');
             $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('sensor_node_id')->nullable(); // Thêm khóa ngoại sensor_node_id để liên kết với bảng sensor_nodes
             $table->unsignedBigInteger('delivery_status_id')->nullable();

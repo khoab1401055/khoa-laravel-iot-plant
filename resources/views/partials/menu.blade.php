@@ -69,6 +69,12 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item @if (Route::currentRouteName() == 'monitoring') active @endif">
+          <a href="{{ route('monitoring') }}" class="menu-link">
+            <i class='bx bxs-sun'></i>
+              <div data-i18n="Tables"> {{ __('messages.sensor_node') }} </div>
+          </a>
+      </li>
         <!-- Tables -->
         <li class="menu-item @if (Route::currentRouteName() == 'monitoring') active @endif">
             <a href="{{ route('monitoring') }}" class="menu-link">

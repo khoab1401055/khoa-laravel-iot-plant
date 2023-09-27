@@ -15,4 +15,9 @@ class DeviceMaster extends Model
         return $this->hasMany(DevicesModule::class, 'devices_master_id');
     }
 
+    public function devicesDescription()
+    {
+        return $this->hasOne(DevicesDescription::class, 'id');
+    }
+
 }

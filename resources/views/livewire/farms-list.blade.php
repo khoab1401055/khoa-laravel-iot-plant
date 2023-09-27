@@ -13,6 +13,7 @@
                                 alt="Default Image">
                         </div>
                         <div class="card-body d-flex flex-column">
+                      
                             <h5 class="card-title"><strong>{{ $farm->name_code }}</strong></h5>
                             <p class="card-text line-clamp-3">
                                 {{ $farm->description }}

@@ -380,7 +380,7 @@ class TranslationsSeederVi extends Seeder
                 'device_list' => 'Danh sách thiết bị',
                 'device_type' => 'Loại thiết bị',
                 'device_name' => 'Tên thiết bị',
-                'device_id' => 'Mã thiết bị',
+                'device_code' => 'Mã thiết bị',
                 'device_status' => 'Trạng thái thiết bị',
                 'device_information' => 'Thông tin thiết bị',
                 'device_details' => 'Chi tiết thiết bị',
@@ -483,8 +483,9 @@ class TranslationsSeederVi extends Seeder
                 'error' => 'Lỗi',
                 'master_data_language'=>'Dịch ngôn ngữ',
                 'main'=>'Mạch chính',
-                'module'=>'Mạch Module'
-                
+                'module'=>'Mạch Module',
+                'modify'=>'Chỉnh sửa',
+
 
             ];
             $now = Carbon::now();

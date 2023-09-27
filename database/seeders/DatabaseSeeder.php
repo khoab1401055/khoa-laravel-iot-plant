@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             $this->call(RolesAndPermissionsSeeder::class);
             $this->call(MasterDataSeeder::class);
             $this->call(UsersTableSeeder::class);
+            $this->call(DevicesDescription::class);
+
             $this->call(DevicesMasterSeeder::class);
             $this->call(SensorNodeSeeder::class);
             $this->call(DeviceLocationSeeder::class);
@@ -35,6 +37,7 @@ class DatabaseSeeder extends Seeder
             $this->call(FarmSeeder::class);
             $this->call(TranslationsSeeder::class);
             $this->call(TranslationsSeederVi::class);
+
             $homeController->provincesAPI();
             DB::commit();
         } catch (\Exception $e) {

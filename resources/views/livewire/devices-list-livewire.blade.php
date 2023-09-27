@@ -9,13 +9,13 @@
                         <img class="card-img-top" src="{{ asset('images/undraw_cabin_hkfr.svg') }}" alt="Default Image">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"><strong>{{ $device->device_id }}</strong></h5>
+                        <h5 class="card-title"><strong>{{ $device->devicesDescription->device_code }}</strong></h5>
                         <p class="card-text small mb-0">
-                            <i class='bx bxs-pencil'></i> {{ $device->name }}
+                            <i class='bx bxs-pencil'></i> {{ $device->devicesDescription->name }}
                         </p>
                         <p class="card-text small">
 
-                            <i class='bx bx-captions'></i> {{ $device->name_alias }}
+                            <i class='bx bx-captions'></i> {{ $device->devicesDescription->name_alias }}
                         </p>
                         @if ($device->devicesModules->count() > 0)
                             <ul class="no-indent">

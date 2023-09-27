@@ -59,7 +59,6 @@ class LivewireRoutesController extends Controller
 
     public function goToFarm(Request $request)
     {
-        // component_exists();
         $farm = Farms::with('customer', 'activeFarmLocation', 'sensorNodes')->where('name_code', $request->name)->first();
         if (!$farm) {
             abort(404);

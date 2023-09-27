@@ -28,7 +28,6 @@ class CreateDeviceLocationTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('updated_by')->nullable(); // Thêm cột updated_by
             $table->unsignedBigInteger('created_by')->nullable(); // Thêm cột created_by
-            // $table->foreign('device_id')->references('id')->on('devices_master')->onDelete('cascade');
         });
     }
 
